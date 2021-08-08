@@ -1,0 +1,96 @@
+tests.one_node_test()
+
+
+Test for 1600 users
+The current Mode and Propose are FTET and SIM
+At the start,
+transaction pool1 has 1600 transactions, transaction pool2 has 0 transactions
+The social welfare is  54400.
+The current Mode and Propose are FTET and NSIM
+At the start,
+transaction pool1 has 800 transactions, transaction pool2 has 800 transactions
+The social welfare is  80000.
+The current Mode and Propose are CURRENT and SIM
+At the start,
+transaction pool1 has 1600 transactions, transaction pool2 has 0 transactions
+The social welfare is  54400.
+The current Mode and Propose are CURRENT and NSIM
+At the start,
+transaction pool1 has 800 transactions, transaction pool2 has 800 transactions
+The social welfare is  80000.
+
+
+Test for 2400 users
+The current Mode and Propose are FTET and SIM
+At the start,
+transaction pool1 has 1616 transactions, transaction pool2 has 0 transactions
+The social welfare is  54368.
+The current Mode and Propose are FTET and NSIM
+At the start,
+transaction pool1 has 1012 transactions, transaction pool2 has 1200 transactions
+The social welfare is  96088.
+The current Mode and Propose are CURRENT and SIM
+At the start,
+transaction pool1 has 2400 transactions, transaction pool2 has 0 transactions
+The social welfare is  43200.
+The current Mode and Propose are CURRENT and NSIM
+At the start,
+transaction pool1 has 1200 transactions, transaction pool2 has 1200 transactions
+The social welfare is  91200.
+
+
+Test for 3200 users
+The current Mode and Propose are FTET and SIM
+At the start,
+transaction pool1 has 1636 transactions, transaction pool2 has 0 transactions
+The social welfare is  54328.
+The current Mode and Propose are FTET and NSIM
+At the start,
+transaction pool1 has 1001 transactions, transaction pool2 has 1600 transactions
+The social welfare is  100320.
+The current Mode and Propose are CURRENT and SIM
+At the start,
+transaction pool1 has 2891 transactions, transaction pool2 has 0 transactions
+The social welfare is  23450.
+The current Mode and Propose are CURRENT and NSIM
+At the start,
+transaction pool1 has 1266 transactions, transaction pool2 has 1600 transactions
+The social welfare is  88700.
+
+
+Test for 4000 users
+The current Mode and Propose are FTET and SIM
+At the start,
+transaction pool1 has 1637 transactions, transaction pool2 has 0 transactions
+The social welfare is  54326.
+The current Mode and Propose are FTET and NSIM
+At the start,
+transaction pool1 has 977 transactions, transaction pool2 has 1592 transactions
+The social welfare is  99662.
+The current Mode and Propose are CURRENT and SIM
+At the start,
+transaction pool1 has 2915 transactions, transaction pool2 has 0 transactions
+The social welfare is  22250.
+The current Mode and Propose are CURRENT and NSIM
+At the start,
+transaction pool1 has 1036 transactions, transaction pool2 has 2000 transactions
+The social welfare is  95912.
+
+
+Test for 4800 users
+The current Mode and Propose are FTET and SIM
+At the start,
+transaction pool1 has 1648 transactions, transaction pool2 has 0 transactions
+The social welfare is  54304.
+The current Mode and Propose are FTET and NSIM
+At the start,
+transaction pool1 has 977 transactions, transaction pool2 has 1606 transactions
+The social welfare is  99470.
+The current Mode and Propose are CURRENT and SIM
+At the start,
+transaction pool1 has 2929 transactions, transaction pool2 has 0 transactions
+The social welfare is  21550.
+The current Mode and Propose are CURRENT and NSIM
+At the start,
+transaction pool1 has 1020 transactions, transaction pool2 has 2400 transactions
+The social welfare is  87720.
