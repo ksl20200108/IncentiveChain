@@ -13,6 +13,6 @@ RUN pip3 install numpy
 # CMD ["python3", "docker_client.py"]
 
 # how to use it?
-# docker build -t two_nodes_test:1.0 .
+# docker build -t two_miners_test:1.0 .
 # -t means the name of the image and its tag
 # " ." at the end means create from a Dockerfile which lies in the current directory

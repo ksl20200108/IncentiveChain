@@ -1,22 +1,9 @@
 """
 tbc: to be continued
     Add a call to Experimenter.save_result() at the end of 10 experiments (send ending message from miners)
-    main function
-        def experiment_start
-    Change the Network.__init__() to let fees1 fees2 contain multiple fees
 tbt: to be tested
-    Network.server_handler
-    Network.client_main_loop
-    Network.acquire_peer_info
 tbd: to be deleted
 tbm: to be modified
-    Network.experimenter_host = -> define it in docker
-    Network.client_main_loop: add another loop outside the original for loop
-        to implement automatic repetitive experiment, at the start of each experiment：
-            Network.bc = Blockchain(fees1, fees2, mode, propose)
-            Network.server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            Network.lock = threading.Lock()
-            Network.start_client_loop()
 tba: to be added
     Three and four nodes test (two miners and one experimenter, three miners and one experimenter)
     10 nodes test
@@ -68,12 +55,17 @@ class Network:
         self.bc: the local blockchain
         self.server_sock: socket object for server side
         """
+        log.info("The current Mode and Propose are % s and %s" % (mode, propose))
         self.bc = Blockchain(fees1, fees2, mode, propose)
         self.server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)    # let not call addr already in use
         # self.clients = random_chosen(bootstrap)
-        self.lock = threading.Lock()
+        self.bc_lock = threading.Lock()
+        self.stop_lock = threading.Lock()
         self.experimenter_host = None    # need to be modified
         self.first_start = True
+        self.client_stop = False
+        self.threads = []
         log.info("Initializing Success")
 
     """
@@ -96,14 +88,26 @@ class Network:
         1st thread in Network: Server thread
         """
         t = threading.Thread(target=self.server_main_loop, args=())
+        self.threads.append(t)
         t.start()
+        t.join()
+        log.info("start server loop stop")
 
     def server_main_loop(self):
         log.info("server main loop")
         while True:
-            conn, addr = self.server_sock.accept()
-            t = threading.Thread(target=self.server_handler, args=(conn, addr))
-            t.start()
+            self.stop_lock.acquire()
+            if not self.client_stop:
+                conn, addr = self.server_sock.accept()
+                t = threading.Thread(target=self.server_handler, args=(conn, addr))
+                t.start()
+                self.stop_lock.release()
+                time.sleep(1)
+            else:
+                self.stop_lock.release()
+                break
+        self.server_sock.close()
+        log.info("server main loop stop")
 
     def server_handler(self, conn, addr):    # max_recv can be 61995
         """
@@ -124,15 +128,17 @@ class Network:
 
     def handle_request_len(self, conn):
         log.info("server handle request len")
-        self.lock.acquire()
+        self.bc_lock.acquire()
         sender = json.dumps({"type_": LEN_MSG, "data": len(self.bc.blocks)}).encode()
-        self.lock.release()
+        self.bc_lock.release()
         # log.info("server handle request len try to send: " + str(sender))
         self.send_msg(conn, sender)
 
     def handle_request_chain(self, conn):
         log.info("server handle request chain")
+        self.bc_lock.acquire()
         sender = json.dumps({"type_": BC_MSG, "data": self.bc.serialize()}).encode()
+        self.bc_lock.release()
         # log.info("server handle request chain try to send: " + str(sender))
         self.send_msg(conn, sender)
 
@@ -143,7 +149,10 @@ class Network:
     def start_client_loop(self, connection_num, peers):
         log.info("start client loop")
         t = threading.Thread(target=self.client_main_loop, args=(connection_num, peers))
+        self.threads.append(t)
         t.start()
+        t.join()
+        log.info("start client loop stop")
 
     def client_main_loop(self, connection_num, peers):
         """
@@ -155,14 +164,15 @@ class Network:
         else:
             set_round = 24
         peers.remove(os.environ.get('LOCAL_IP'))
-        for r in range(0, set_round):
+        r = 1
+        while r < set_round:    # if it's not while the blocks will increase out of limit
             """
             In one experiment, stop loop after mining defined number of blocks
             """
             # mining
-            self.bc.add_block_by_mining()
-            time.sleep(10)    # sleep for 1 minutes
-            log.info("Mined" + str(r + 1) + "block(s)")
+            self.bc.add_block_by_mining(self.bc_lock)
+            time.sleep(5)    # sleep for 1 minutes
+            log.info("Mined " + str(r + 1) + " block(s)")
             # start connections thread -> require server's chain length
             threads = [None] * connection_num
             self.results = [None] * connection_num
@@ -183,22 +193,25 @@ class Network:
             self.first_start = False
             # compare with the longest (save ipv4 address)
             max_length = max(self.results)
-            self.lock.acquire()
+            self.bc_lock.acquire()
             if max_length > len(self.bc.blocks):
                 # shorter: start client connection -> request chain info for the optimal address
                 log.info("client request chain length " + str(max_length)
-                         + " and local length " + str(len(self.bc.blocks)))
+                         + " and local length " + str(self.bc.blocks[-1].index))
                 data = self.acquire_peer_chain(self.results_hosts[max_length])
                 # log.info("client receive chain: " + str(data))
                 self.results_hosts = None    # de-reference the hosts dictionary
                 self.bc = Blockchain.deserialize(data)    # update local chain
                 log.info("client update local chain")
-            self.lock.release()
+            r = self.bc.blocks[-1].index
+            self.bc_lock.release()
             # -> start mining again
+
         # calculate the social welfare
         self.bc.update_total_welfare()
         # send the information to the Experimenter
         if self.experimenter_host:
+            log.info("there is experimenter")
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((self.experimenter_host, 5678))
             sender = json.dumps({
@@ -209,8 +222,15 @@ class Network:
             }).encode()
             self.send_msg(s, sender, True)    # close the connection after reporting
         else:
-            log.info("The node" + os.environ.get('LOCAL_IP') + "'s social welfare is" + str(self.bc.current_social_welfare))
+            log.info("there is no experimenter")
+            log.info("The node " + os.environ.get('LOCAL_IP') + "'s social welfare is " + str(self.bc.current_social_welfare))
+            self.stop_lock.acquire()
+            self.client_stop = True
+            self.stop_lock.release()
             # exit()
+        log.info("client main loop stop")
+        log.info("with blocks")
+        log.info(str([str(i.show()) for i in self.bc.blocks]))
 
     def acquire_peers_info(self, index, host, port=5678):
         """
@@ -320,18 +340,18 @@ class Experimenter:
                 self.FTET_Nsim_rtx += data["remain_txs"]
 
     def save_result(self):
-        print("The average social welfare of FTET mechanism and simultaneous proposing is:")
-        print(self.welfare_sum["FTETSIM"] / self.welfare_times["FTETSIM"])
-        print("with average remain transaction of")
-        print(self.FTET_Sim_rtx / self.welfare_times["FTETSIM"])
-        print("The average socail welfare of FTET mechanism and non-simultaneous proposing is:")
-        print(self.welfare_sum["FTETNSIM"] / self.welfare_times["FTETNSIM"])
-        print("with average remain transaction of")
-        print(self.FTET_Nsim_rtx / self.welfare_times["FTETNSIM"])
-        print("The average social welfare of Current blockchain mechanism and simultaneous proposing is:")
-        print(self.welfare_sum["CURRENTSIM"] / self.welfare_times["CURRENTSIM"])
-        print("The average social welfare of Current blockchain mechanism and non-simultaneous proposing is:")
-        print(self.welfare_sum["CURRENTNSIM"] / self.welfare_times["CURRENTNSIM"])
+        log.info("The average social welfare of FTET mechanism and simultaneous proposing is:")
+        log.info(self.welfare_sum["FTETSIM"] / self.welfare_times["FTETSIM"])
+        log.info("with average remain transaction of")
+        log.info(self.FTET_Sim_rtx / self.welfare_times["FTETSIM"])
+        log.info("The average socail welfare of FTET mechanism and non-simultaneous proposing is:")
+        log.info(self.welfare_sum["FTETNSIM"] / self.welfare_times["FTETNSIM"])
+        log.info("with average remain transaction of")
+        log.info(self.FTET_Nsim_rtx / self.welfare_times["FTETNSIM"])
+        log.info("The average social welfare of Current blockchain mechanism and simultaneous proposing is:")
+        log.info(self.welfare_sum["CURRENTSIM"] / self.welfare_times["CURRENTSIM"])
+        log.info("The average social welfare of Current blockchain mechanism and non-simultaneous proposing is:")
+        log.info(self.welfare_sum["CURRENTNSIM"] / self.welfare_times["CURRENTNSIM"])
         exit()
 
     """

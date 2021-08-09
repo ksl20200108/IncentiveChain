@@ -101,6 +101,17 @@ class Block:
             "transactions": self.transactions
         }
 
+    def show(self):
+        return {
+            "index": self.index,
+            "time_stamp": self.time_stamp,
+            "pre_block_hash": self.pre_block_hash,
+            "merkle_root": self.merkle_root,
+            "difficulty_target": self.difficulty_target,
+            "nounce": self.nounce,
+            "transaction_num": len(self.transactions)
+        }
+
     @classmethod
     def deserialize(cls, data):
         b = cls(data["index"], data["pre_block_hash"], data["transactions"])
@@ -115,7 +126,7 @@ class Block:
 class Blockchain:
 
     def __init__(self, fees1, fees2, mode, propose):
-        print("The current Mode and Propose are % s and %s" % (mode, propose))
+        # print("The current Mode and Propose are % s and %s" % (mode, propose))
         """
         :param fees1: storing fees for simultaneous proposing and early half fees for Non-simultaneous proposing
         :param fees2: storing fees for late half half fees for Non-simultaneous proposing
@@ -138,7 +149,7 @@ class Blockchain:
         """the PROPOSE can be SIM or NSIM"""
         self.PROPOSE = propose
 
-    def add_block_by_mining(self):
+    def add_block_by_mining(self, lock):
         index = self.blocks[-1].index + 1
         previous_hash = self.blocks[-1].get_block_hash()
         if self.PROPOSE == "NSIM" and index == 6:
@@ -181,7 +192,9 @@ class Blockchain:
         """
         success
         """
+        lock.acquire()
         self.blocks.append(b)
+        lock.release()
         # self.update_total_welfare()
         # return b
 
