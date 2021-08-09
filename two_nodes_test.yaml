@@ -1,0 +1,81 @@
+version: '3'
+
+services:
+  node1:    # name of the service is "node1" which can be referred to when needed (it must be lower cased)
+    # build:    # use either image or build
+    #   context: .    # where to build
+    #   dockerfile: Dockerfile    # the name of the target Dockerfile
+    image: two_nodes_test:1.0    # use either image or build
+    container_name: node1
+    environment:    # the constants in the environment
+      - LOCAL_IP=192.168.1.1    # use python os to get this predefined IP
+      # Must use 192.168.118.132 instead of '192.168.118.132' otherwise it will not be correct ipv4 form
+      # that we can use in socket connect()
+    ports:
+      - 5679:5678    # map local port "5679" to (":") docker port ("5678"). Container listens by binding ("5678")
+    privileged: true    # so that the container has the root priviliges
+    volumes:
+      - ./main.py:/run/main.py    # copy from local "docker_server.py" and paste as "docker_server.py" (the rightmost) under the directory "run"
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:    # no longer use "default" since we defined a network called "static-network" at the end
+        ipv4_address: 192.168.1.1
+
+  node2:
+    # build:    # use either image or build
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: two_nodes_test:1.0    # use either image or build
+    depends_on:    # to restrict the build order after the tcp server
+      - node1
+    container_name: node2
+    environment:
+      - LOCAL_IP=192.168.1.2
+    ports:
+      - 5680:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py    # copy from local "docker_server.py" and paste as "docker_server.py" (the rightmost) under the directory "run"
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.2
+
+
+# networks:
+#   default:
+#     external:
+#       name: genesis  # docker network create --subnet=192.168.118.0/24 genesis
+
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 192.168.0.0/16    # 192.168.0.0/16 has the range of 192.168.0.0~192.168.255.255.
+          gateway: 192.168.0.1
+
+# how to use it?
+# running: docker-compose -f two_nodes_test.yaml up -d
+# -f means open with the file follows the file name
+# -d means detached (run containers in background)
+
+# Well-Known ports: Port 0~1023 are reserved for common TCP/IP applications and are called
+# ip addresses have no limit and are non-occupied but ports have limit and some are occupied
+
+
+# Registered ports are in the range 1024 to 49151.
+# Dynamic ports are in the range 49152 to 65535.
+# As mentioned, most new port assignments are in the range from 1024 to 49151.
+
+# if you want to change ip for the container, you need to change two places within each paragraph

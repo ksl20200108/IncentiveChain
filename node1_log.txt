@@ -1,0 +1,360 @@
+(base) gly@leles-MacBook-Pro two_nodes_test % docker logs node1
+2021-08-09 08:18:16,886 - kademlia - INFO - Initializing Success
+2021-08-09 08:18:16,886 - kademlia - INFO - main function start server
+2021-08-09 08:18:16,886 - kademlia - INFO - main function start client
+2021-08-09 08:18:16,887 - kademlia - INFO - start server loop
+2021-08-09 08:18:16,887 - kademlia - INFO - server main loop
+2021-08-09 08:18:16,888 - kademlia - INFO - start client loop
+2021-08-09 08:18:16,888 - kademlia - INFO - client main loop
+The current Mode and Propose are CURRENT and SIM
+2021-08-09 08:18:26,864 - kademlia - INFO - Mined1block(s)
+2021-08-09 08:18:26,864 - kademlia - INFO - Trying connect
+2021-08-09 08:18:26,865 - kademlia - INFO - Successfully connected
+2021-08-09 08:18:26,866 - kademlia - INFO - client send len request
+2021-08-09 08:18:27,602 - kademlia - INFO - server handler
+2021-08-09 08:18:27,602 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:18:27,602 - kademlia - INFO - server handle request len
+2021-08-09 08:18:27,604 - kademlia - INFO - server handler
+2021-08-09 08:18:27,604 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:18:27,604 - kademlia - INFO - server handle request chain
+2021-08-09 08:18:36,877 - kademlia - INFO - Mined2block(s)
+2021-08-09 08:18:36,878 - kademlia - INFO - Trying connect
+2021-08-09 08:18:36,879 - kademlia - INFO - Successfully connected
+2021-08-09 08:18:36,880 - kademlia - INFO - client send len request
+2021-08-09 08:18:36,880 - kademlia - INFO - client request chain
+2021-08-09 08:18:36,884 - kademlia - INFO - deserialized block index: 0
+2021-08-09 08:18:36,884 - kademlia - INFO - deserialized block index: 1
+2021-08-09 08:18:36,884 - kademlia - INFO - deserialized block index: 2
+2021-08-09 08:18:36,884 - kademlia - INFO - deserialized block index: 3
+2021-08-09 08:18:36,885 - kademlia - INFO - client update local chain
+2021-08-09 08:18:37,622 - kademlia - INFO - server handler
+2021-08-09 08:18:37,623 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:18:37,623 - kademlia - INFO - server handle request len
+2021-08-09 08:18:37,625 - kademlia - INFO - server handler
+2021-08-09 08:18:37,626 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:18:37,626 - kademlia - INFO - server handle request chain
+2021-08-09 08:18:46,895 - kademlia - INFO - Mined3block(s)
+2021-08-09 08:18:46,895 - kademlia - INFO - Trying connect
+2021-08-09 08:18:46,896 - kademlia - INFO - Successfully connected
+2021-08-09 08:18:46,897 - kademlia - INFO - client send len request
+2021-08-09 08:18:46,898 - kademlia - INFO - client request chain
+2021-08-09 08:18:46,902 - kademlia - INFO - deserialized block index: 0
+2021-08-09 08:18:46,902 - kademlia - INFO - deserialized block index: 1
+2021-08-09 08:18:46,902 - kademlia - INFO - deserialized block index: 2
+2021-08-09 08:18:46,902 - kademlia - INFO - deserialized block index: 3
+2021-08-09 08:18:46,902 - kademlia - INFO - deserialized block index: 4
+2021-08-09 08:18:46,902 - kademlia - INFO - deserialized block index: 5
+2021-08-09 08:18:46,902 - kademlia - INFO - client update local chain
+2021-08-09 08:18:47,636 - kademlia - INFO - server handler
+2021-08-09 08:18:47,636 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:18:47,638 - kademlia - INFO - server handle request len
+2021-08-09 08:18:47,641 - kademlia - INFO - server handler
+2021-08-09 08:18:47,642 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:18:47,642 - kademlia - INFO - server handle request chain
+2021-08-09 08:18:56,880 - kademlia - INFO - Mined4block(s)
+2021-08-09 08:18:56,881 - kademlia - INFO - Trying connect
+2021-08-09 08:18:56,882 - kademlia - INFO - Successfully connected
+2021-08-09 08:18:56,884 - kademlia - INFO - client send len request
+2021-08-09 08:18:56,884 - kademlia - INFO - client request chain
+2021-08-09 08:18:56,889 - kademlia - INFO - deserialized block index: 0
+2021-08-09 08:18:56,889 - kademlia - INFO - deserialized block index: 1
+2021-08-09 08:18:56,889 - kademlia - INFO - deserialized block index: 2
+2021-08-09 08:18:56,889 - kademlia - INFO - deserialized block index: 3
+2021-08-09 08:18:56,889 - kademlia - INFO - deserialized block index: 4
+2021-08-09 08:18:56,889 - kademlia - INFO - deserialized block index: 5
+2021-08-09 08:18:56,889 - kademlia - INFO - deserialized block index: 6
+2021-08-09 08:18:56,889 - kademlia - INFO - deserialized block index: 7
+2021-08-09 08:18:56,890 - kademlia - INFO - client update local chain
+2021-08-09 08:20:53,622 - kademlia - INFO - Initializing Success
+2021-08-09 08:20:53,622 - kademlia - INFO - main function start server
+2021-08-09 08:20:53,623 - kademlia - INFO - main function start client
+2021-08-09 08:20:53,623 - kademlia - INFO - start server loop
+2021-08-09 08:20:53,623 - kademlia - INFO - server main loop
+The current Mode and Propose are CURRENT and SIM
+2021-08-09 08:20:53,624 - kademlia - INFO - start client loop
+2021-08-09 08:20:53,625 - kademlia - INFO - client main loop
+2021-08-09 08:21:03,638 - kademlia - INFO - Mined1block(s)
+2021-08-09 08:21:03,639 - kademlia - INFO - Trying connect
+2021-08-09 08:21:03,641 - kademlia - INFO - Successfully connected
+2021-08-09 08:21:03,643 - kademlia - INFO - client send len request
+2021-08-09 08:21:04,229 - kademlia - INFO - server handler
+2021-08-09 08:21:04,230 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:21:04,230 - kademlia - INFO - server handle request len
+2021-08-09 08:21:04,233 - kademlia - INFO - server handler
+2021-08-09 08:21:04,234 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:21:04,234 - kademlia - INFO - server handle request chain
+2021-08-09 08:21:13,651 - kademlia - INFO - Mined2block(s)
+2021-08-09 08:21:13,652 - kademlia - INFO - Trying connect
+2021-08-09 08:21:13,652 - kademlia - INFO - Successfully connected
+2021-08-09 08:21:13,655 - kademlia - INFO - client send len request
+2021-08-09 08:21:13,656 - kademlia - INFO - client request chain
+2021-08-09 08:21:13,661 - kademlia - INFO - client update local chain
+2021-08-09 08:21:14,251 - kademlia - INFO - server handler
+2021-08-09 08:21:14,251 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:21:14,251 - kademlia - INFO - server handle request len
+2021-08-09 08:21:14,253 - kademlia - INFO - server handler
+2021-08-09 08:21:14,253 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:21:14,253 - kademlia - INFO - server handle request chain
+2021-08-09 08:21:23,638 - kademlia - INFO - Mined3block(s)
+2021-08-09 08:21:23,640 - kademlia - INFO - Trying connect
+2021-08-09 08:21:23,641 - kademlia - INFO - Successfully connected
+2021-08-09 08:21:23,643 - kademlia - INFO - client send len request
+2021-08-09 08:21:23,644 - kademlia - INFO - client request chain
+2021-08-09 08:21:23,649 - kademlia - INFO - client update local chain
+2021-08-09 08:21:24,240 - kademlia - INFO - server handler
+2021-08-09 08:21:24,241 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:21:24,241 - kademlia - INFO - server handle request len
+2021-08-09 08:21:24,243 - kademlia - INFO - server handler
+2021-08-09 08:21:24,243 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:21:24,244 - kademlia - INFO - server handle request chain
+2021-08-09 08:21:33,661 - kademlia - INFO - Mined4block(s)
+2021-08-09 08:21:33,663 - kademlia - INFO - Trying connect
+2021-08-09 08:21:33,664 - kademlia - INFO - Successfully connected
+2021-08-09 08:21:33,666 - kademlia - INFO - client send len request
+2021-08-09 08:21:33,666 - kademlia - INFO - client request chain
+2021-08-09 08:21:33,672 - kademlia - INFO - client update local chain
+2021-08-09 08:21:34,267 - kademlia - INFO - server handler
+2021-08-09 08:21:34,268 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:21:34,268 - kademlia - INFO - server handle request len
+2021-08-09 08:21:34,270 - kademlia - INFO - server handler
+2021-08-09 08:21:34,271 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:21:34,271 - kademlia - INFO - server handle request chain
+2021-08-09 08:21:43,676 - kademlia - INFO - Mined5block(s)
+2021-08-09 08:21:43,676 - kademlia - INFO - Trying connect
+2021-08-09 08:21:43,677 - kademlia - INFO - Successfully connected
+2021-08-09 08:21:43,678 - kademlia - INFO - client send len request
+2021-08-09 08:21:43,678 - kademlia - INFO - client request chain
+2021-08-09 08:21:43,682 - kademlia - INFO - client update local chain
+2021-08-09 08:21:44,289 - kademlia - INFO - server handler
+2021-08-09 08:21:44,289 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:21:44,289 - kademlia - INFO - server handle request len
+2021-08-09 08:21:44,292 - kademlia - INFO - server handler
+2021-08-09 08:21:44,293 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:21:44,293 - kademlia - INFO - server handle request chain
+2021-08-09 08:21:53,658 - kademlia - INFO - Mined6block(s)
+2021-08-09 08:21:53,660 - kademlia - INFO - Trying connect
+2021-08-09 08:21:53,661 - kademlia - INFO - Successfully connected
+2021-08-09 08:21:53,664 - kademlia - INFO - client send len request
+2021-08-09 08:21:53,664 - kademlia - INFO - client request chain
+2021-08-09 08:21:53,670 - kademlia - INFO - client update local chain
+2021-08-09 08:21:54,278 - kademlia - INFO - server handler
+2021-08-09 08:21:54,279 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:21:54,279 - kademlia - INFO - server handle request len
+2021-08-09 08:21:54,281 - kademlia - INFO - server handler
+2021-08-09 08:21:54,282 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:21:54,282 - kademlia - INFO - server handle request chain
+2021-08-09 08:22:03,681 - kademlia - INFO - Mined7block(s)
+2021-08-09 08:22:03,682 - kademlia - INFO - Trying connect
+2021-08-09 08:22:03,682 - kademlia - INFO - Successfully connected
+2021-08-09 08:22:03,685 - kademlia - INFO - client send len request
+2021-08-09 08:22:03,685 - kademlia - INFO - client request chain
+2021-08-09 08:22:03,690 - kademlia - INFO - client update local chain
+2021-08-09 08:22:04,305 - kademlia - INFO - server handler
+2021-08-09 08:22:04,305 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:22:04,305 - kademlia - INFO - server handle request len
+2021-08-09 08:22:04,309 - kademlia - INFO - server handler
+2021-08-09 08:22:04,309 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:22:04,309 - kademlia - INFO - server handle request chain
+2021-08-09 08:22:13,706 - kademlia - INFO - Mined8block(s)
+2021-08-09 08:22:13,706 - kademlia - INFO - Trying connect
+2021-08-09 08:22:13,707 - kademlia - INFO - Successfully connected
+2021-08-09 08:22:13,708 - kademlia - INFO - client send len request
+2021-08-09 08:22:13,708 - kademlia - INFO - client request chain
+2021-08-09 08:22:13,711 - kademlia - INFO - client update local chain
+2021-08-09 08:22:14,327 - kademlia - INFO - server handler
+2021-08-09 08:22:14,327 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:22:14,327 - kademlia - INFO - server handle request len
+2021-08-09 08:22:14,328 - kademlia - INFO - server handler
+2021-08-09 08:22:14,329 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:22:14,329 - kademlia - INFO - server handle request chain
+2021-08-09 08:22:23,678 - kademlia - INFO - Mined9block(s)
+2021-08-09 08:22:23,680 - kademlia - INFO - Trying connect
+2021-08-09 08:22:23,681 - kademlia - INFO - Successfully connected
+2021-08-09 08:22:23,684 - kademlia - INFO - client send len request
+2021-08-09 08:22:23,684 - kademlia - INFO - client request chain
+2021-08-09 08:22:23,690 - kademlia - INFO - client update local chain
+2021-08-09 08:22:24,316 - kademlia - INFO - server handler
+2021-08-09 08:22:24,317 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:22:24,317 - kademlia - INFO - server handle request len
+2021-08-09 08:22:24,319 - kademlia - INFO - server handler
+2021-08-09 08:22:24,319 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:22:24,320 - kademlia - INFO - server handle request chain
+2021-08-09 08:22:33,694 - kademlia - INFO - Mined10block(s)
+2021-08-09 08:22:33,695 - kademlia - INFO - Trying connect
+2021-08-09 08:22:33,696 - kademlia - INFO - Successfully connected
+2021-08-09 08:22:33,700 - kademlia - INFO - client send len request
+2021-08-09 08:22:33,700 - kademlia - INFO - client request chain
+2021-08-09 08:22:33,706 - kademlia - INFO - client update local chain
+2021-08-09 08:22:34,342 - kademlia - INFO - server handler
+2021-08-09 08:22:34,344 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:22:34,344 - kademlia - INFO - server handle request len
+2021-08-09 08:22:34,346 - kademlia - INFO - server handler
+2021-08-09 08:22:34,347 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:22:34,347 - kademlia - INFO - server handle request chain
+2021-08-09 08:22:43,719 - kademlia - INFO - Mined11block(s)
+2021-08-09 08:22:43,721 - kademlia - INFO - Trying connect
+2021-08-09 08:22:43,722 - kademlia - INFO - Successfully connected
+2021-08-09 08:22:43,727 - kademlia - INFO - client send len request
+2021-08-09 08:22:43,727 - kademlia - INFO - client request chain
+2021-08-09 08:22:43,732 - kademlia - INFO - client update local chain
+2021-08-09 08:22:44,366 - kademlia - INFO - server handler
+2021-08-09 08:22:44,367 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:22:44,367 - kademlia - INFO - server handle request len
+2021-08-09 08:22:44,369 - kademlia - INFO - server handler
+2021-08-09 08:22:44,370 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:22:44,370 - kademlia - INFO - server handle request chain
+2021-08-09 08:22:53,711 - kademlia - INFO - Mined12block(s)
+2021-08-09 08:22:53,713 - kademlia - INFO - Trying connect
+2021-08-09 08:22:53,714 - kademlia - INFO - Successfully connected
+2021-08-09 08:22:53,717 - kademlia - INFO - client send len request
+2021-08-09 08:22:53,717 - kademlia - INFO - client request chain
+2021-08-09 08:22:53,723 - kademlia - INFO - client update local chain
+2021-08-09 08:22:54,352 - kademlia - INFO - server handler
+2021-08-09 08:22:54,353 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:22:54,353 - kademlia - INFO - server handle request len
+2021-08-09 08:22:54,355 - kademlia - INFO - server handler
+2021-08-09 08:22:54,356 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:22:54,356 - kademlia - INFO - server handle request chain
+2021-08-09 08:23:03,735 - kademlia - INFO - Mined13block(s)
+2021-08-09 08:23:03,736 - kademlia - INFO - Trying connect
+2021-08-09 08:23:03,736 - kademlia - INFO - Successfully connected
+2021-08-09 08:23:03,738 - kademlia - INFO - client send len request
+2021-08-09 08:23:03,738 - kademlia - INFO - client request chain
+2021-08-09 08:23:03,742 - kademlia - INFO - client update local chain
+2021-08-09 08:23:04,376 - kademlia - INFO - server handler
+2021-08-09 08:23:04,377 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:23:04,377 - kademlia - INFO - server handle request len
+2021-08-09 08:23:04,380 - kademlia - INFO - server handler
+2021-08-09 08:23:04,380 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:23:04,380 - kademlia - INFO - server handle request chain
+2021-08-09 08:23:13,755 - kademlia - INFO - Mined14block(s)
+2021-08-09 08:23:13,756 - kademlia - INFO - Trying connect
+2021-08-09 08:23:13,756 - kademlia - INFO - Successfully connected
+2021-08-09 08:23:13,758 - kademlia - INFO - client send len request
+2021-08-09 08:23:13,759 - kademlia - INFO - client request chain
+2021-08-09 08:23:13,764 - kademlia - INFO - client update local chain
+2021-08-09 08:23:14,394 - kademlia - INFO - server handler
+2021-08-09 08:23:14,395 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:23:14,395 - kademlia - INFO - server handle request len
+2021-08-09 08:23:14,397 - kademlia - INFO - server handler
+2021-08-09 08:23:14,397 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:23:14,397 - kademlia - INFO - server handle request chain
+2021-08-09 08:23:23,738 - kademlia - INFO - Mined15block(s)
+2021-08-09 08:23:23,740 - kademlia - INFO - Trying connect
+2021-08-09 08:23:23,741 - kademlia - INFO - Successfully connected
+2021-08-09 08:23:23,743 - kademlia - INFO - client send len request
+2021-08-09 08:23:23,744 - kademlia - INFO - client request chain
+2021-08-09 08:23:23,750 - kademlia - INFO - client update local chain
+2021-08-09 08:23:24,382 - kademlia - INFO - server handler
+2021-08-09 08:23:24,383 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:23:24,383 - kademlia - INFO - server handle request len
+2021-08-09 08:23:24,386 - kademlia - INFO - server handler
+2021-08-09 08:23:24,386 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:23:24,387 - kademlia - INFO - server handle request chain
+2021-08-09 08:23:33,761 - kademlia - INFO - Mined16block(s)
+2021-08-09 08:23:33,763 - kademlia - INFO - Trying connect
+2021-08-09 08:23:33,763 - kademlia - INFO - Successfully connected
+2021-08-09 08:23:33,766 - kademlia - INFO - client send len request
+2021-08-09 08:23:33,767 - kademlia - INFO - client request chain
+2021-08-09 08:23:33,772 - kademlia - INFO - client update local chain
+2021-08-09 08:23:34,408 - kademlia - INFO - server handler
+2021-08-09 08:23:34,408 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:23:34,409 - kademlia - INFO - server handle request len
+2021-08-09 08:23:34,412 - kademlia - INFO - server handler
+2021-08-09 08:23:34,413 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:23:34,413 - kademlia - INFO - server handle request chain
+2021-08-09 08:23:43,786 - kademlia - INFO - Mined17block(s)
+2021-08-09 08:23:43,788 - kademlia - INFO - Trying connect
+2021-08-09 08:23:43,789 - kademlia - INFO - Successfully connected
+2021-08-09 08:23:43,792 - kademlia - INFO - client send len request
+2021-08-09 08:23:43,792 - kademlia - INFO - client request chain
+2021-08-09 08:23:43,798 - kademlia - INFO - client update local chain
+2021-08-09 08:23:44,433 - kademlia - INFO - server handler
+2021-08-09 08:23:44,433 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:23:44,433 - kademlia - INFO - server handle request len
+2021-08-09 08:23:44,436 - kademlia - INFO - server handler
+2021-08-09 08:23:44,437 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:23:44,437 - kademlia - INFO - server handle request chain
+2021-08-09 08:23:53,779 - kademlia - INFO - Mined18block(s)
+2021-08-09 08:23:53,780 - kademlia - INFO - Trying connect
+2021-08-09 08:23:53,781 - kademlia - INFO - Successfully connected
+2021-08-09 08:23:53,784 - kademlia - INFO - client send len request
+2021-08-09 08:23:53,784 - kademlia - INFO - client request chain
+2021-08-09 08:23:53,790 - kademlia - INFO - client update local chain
+2021-08-09 08:23:54,427 - kademlia - INFO - server handler
+2021-08-09 08:23:54,428 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:23:54,429 - kademlia - INFO - server handle request len
+2021-08-09 08:23:54,431 - kademlia - INFO - server handler
+2021-08-09 08:23:54,431 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:23:54,431 - kademlia - INFO - server handle request chain
+2021-08-09 08:24:03,804 - kademlia - INFO - Mined19block(s)
+2021-08-09 08:24:03,805 - kademlia - INFO - Trying connect
+2021-08-09 08:24:03,807 - kademlia - INFO - Successfully connected
+2021-08-09 08:24:03,810 - kademlia - INFO - client send len request
+2021-08-09 08:24:03,810 - kademlia - INFO - client request chain
+2021-08-09 08:24:03,816 - kademlia - INFO - client update local chain
+2021-08-09 08:24:04,449 - kademlia - INFO - server handler
+2021-08-09 08:24:04,449 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:24:04,449 - kademlia - INFO - server handle request len
+2021-08-09 08:24:04,451 - kademlia - INFO - server handler
+2021-08-09 08:24:04,451 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:24:04,451 - kademlia - INFO - server handle request chain
+2021-08-09 08:24:13,827 - kademlia - INFO - Mined20block(s)
+2021-08-09 08:24:13,828 - kademlia - INFO - Trying connect
+2021-08-09 08:24:13,828 - kademlia - INFO - Successfully connected
+2021-08-09 08:24:13,830 - kademlia - INFO - client send len request
+2021-08-09 08:24:13,830 - kademlia - INFO - client request chain
+2021-08-09 08:24:13,835 - kademlia - INFO - client update local chain
+2021-08-09 08:24:14,471 - kademlia - INFO - server handler
+2021-08-09 08:24:14,471 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:24:14,472 - kademlia - INFO - server handle request len
+2021-08-09 08:24:14,474 - kademlia - INFO - server handler
+2021-08-09 08:24:14,474 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:24:14,475 - kademlia - INFO - server handle request chain
+2021-08-09 08:24:23,816 - kademlia - INFO - Mined21block(s)
+2021-08-09 08:24:23,818 - kademlia - INFO - Trying connect
+2021-08-09 08:24:23,820 - kademlia - INFO - Successfully connected
+2021-08-09 08:24:23,822 - kademlia - INFO - client send len request
+2021-08-09 08:24:23,822 - kademlia - INFO - client request chain
+2021-08-09 08:24:23,828 - kademlia - INFO - client update local chain
+2021-08-09 08:24:24,462 - kademlia - INFO - server handler
+2021-08-09 08:24:24,463 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:24:24,463 - kademlia - INFO - server handle request len
+2021-08-09 08:24:24,465 - kademlia - INFO - server handler
+2021-08-09 08:24:24,466 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:24:24,466 - kademlia - INFO - server handle request chain
+2021-08-09 08:24:33,839 - kademlia - INFO - Mined22block(s)
+2021-08-09 08:24:33,841 - kademlia - INFO - Trying connect
+2021-08-09 08:24:33,842 - kademlia - INFO - Successfully connected
+2021-08-09 08:24:33,844 - kademlia - INFO - client send len request
+2021-08-09 08:24:33,844 - kademlia - INFO - client request chain
+2021-08-09 08:24:33,850 - kademlia - INFO - client update local chain
+2021-08-09 08:24:34,484 - kademlia - INFO - server handler
+2021-08-09 08:24:34,485 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:24:34,485 - kademlia - INFO - server handle request len
+2021-08-09 08:24:34,486 - kademlia - INFO - server handler
+2021-08-09 08:24:34,486 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:24:34,486 - kademlia - INFO - server handle request chain
+2021-08-09 08:24:43,865 - kademlia - INFO - Mined23block(s)
+2021-08-09 08:24:43,866 - kademlia - INFO - Trying connect
+2021-08-09 08:24:43,867 - kademlia - INFO - Successfully connected
+2021-08-09 08:24:43,870 - kademlia - INFO - client send len request
+2021-08-09 08:24:43,870 - kademlia - INFO - client request chain
+2021-08-09 08:24:43,876 - kademlia - INFO - client update local chain
+2021-08-09 08:24:44,498 - kademlia - INFO - server handler
+2021-08-09 08:24:44,499 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:24:44,499 - kademlia - INFO - server handle request len
+2021-08-09 08:24:44,500 - kademlia - INFO - server handler
+2021-08-09 08:24:44,501 - kademlia - INFO - server receive message: {'type_': 2, 'data': None}
+2021-08-09 08:24:44,501 - kademlia - INFO - server handle request chain
+2021-08-09 08:24:53,851 - kademlia - INFO - Mined24block(s)
+2021-08-09 08:24:53,852 - kademlia - INFO - Trying connect
+2021-08-09 08:24:53,853 - kademlia - INFO - Successfully connected
+2021-08-09 08:24:53,856 - kademlia - INFO - client send len request
+2021-08-09 08:24:53,856 - kademlia - INFO - client request chain
+2021-08-09 08:24:53,862 - kademlia - INFO - client update local chain
+2021-08-09 08:24:53,863 - kademlia - INFO - The node192.168.1.1's social welfare is54400
+2021-08-09 08:24:54,483 - kademlia - INFO - server handler
+2021-08-09 08:24:54,483 - kademlia - INFO - server receive message: {'type_': 1, 'data': None}
+2021-08-09 08:24:54,484 - kademlia - INFO - server handle request len
+(base) gly@leles-MacBook-Pro two_nodes_test %
