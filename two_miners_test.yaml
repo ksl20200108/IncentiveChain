@@ -31,8 +31,8 @@ services:
     #   context: .
     #   dockerfile: Dockerfile
     image: two_miners_test:1.0    # use either image or build
-    depends_on:    # to restrict the build order after the tcp server
-      - node1
+#    depends_on:    # to restrict the build order after the tcp server
+#      - node1
     container_name: node2
     environment:
       - LOCAL_IP=192.168.1.2

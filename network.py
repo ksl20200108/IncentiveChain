@@ -46,7 +46,7 @@ class Network:
     Miner's network
     """
 
-    def __init__(self, fees1, fees2, mode, propose):
+    def __init__(self, fees1, fees2, mode, propose, user_num):
         """
         :param fees1: transactions in simultaneous proposing and early half transactions in non-simultaneous proposing
         :param fees2: late half transactions in non-simultaneous proposing
@@ -66,6 +66,7 @@ class Network:
         self.first_start = True
         self.client_stop = False
         self.threads = []
+        self.user_num = user_num
         log.info("Initializing Success")
 
     """
@@ -172,7 +173,7 @@ class Network:
             # mining
             self.bc.add_block_by_mining(self.bc_lock)
             time.sleep(5)    # sleep for 1 minutes
-            log.info("Mined " + str(r + 1) + " block(s)")
+            log.info("Mined " + str(r) + " block(s)")
             # start connections thread -> require server's chain length
             threads = [None] * connection_num
             self.results = [None] * connection_num
@@ -224,6 +225,7 @@ class Network:
         else:
             log.info("there is no experimenter")
             log.info("The node " + os.environ.get('LOCAL_IP') + "'s social welfare is " + str(self.bc.current_social_welfare))
+            log.info("In " + self.bc.MODE + " " + self.bc.PROPOSE + " " + str(self.user_num) + " users")
             self.stop_lock.acquire()
             self.client_stop = True
             self.stop_lock.release()
