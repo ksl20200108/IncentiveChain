@@ -41,7 +41,7 @@ def create_peers(round):
     pickle.dump(peers, fp)
 
 
-# create_data()
+create_data()
 path = './data'
 number = 1
 user_num = 1600
@@ -53,7 +53,7 @@ fee2 = pickle.load(fp)
 print(fee1)
 print(fee2)
 
-# create_peers(20)
+create_peers(20)
 path = './peers'
 fp = open(os.path.join(path, "peers.txt"), "rb")
 peers = pickle.load(fp)
