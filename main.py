@@ -13,6 +13,8 @@ def each_test(number, mode, propose, user_num):
     path = './data'
     fee1 = np.load(os.path.join(path, str(number) + type + "fee1" + str(user_num) + ".npy"))
     fee2 = np.load(os.path.join(path, str(number) + type + "fee2" + str(user_num) + ".npy"))
+    fee1 = fee1.tolist()
+    fee2 = fee2.tolist()
 
     # fp = open(os.path.join(path, str(number) + type + "fee1" + str(user_num) + ".txt"), "rb")
     # fee1 = pickle.load(fp)
