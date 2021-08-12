@@ -31,3 +31,7 @@ docker build -t two_miners_test:1.0 .
 docker-compose -f emm.yaml up -d
 
 docker logs -f experimenter
+
+# After experimenter logging result
+
+docker stop $(docker ps -q)
