@@ -1,5 +1,9 @@
 # IncentiveChain
 
+A demo for 
+
+# Experiment preparation
+
 sudo apt-get update
 
 sudo apt-get install git-all
@@ -28,7 +32,11 @@ python3 data.py
 
 docker build -t two_miners_test:1.0 .
 
+# Start experiment
+
 docker-compose -f emm.yaml up -d
+
+# Check the result
 
 docker logs -f experimenter
 
