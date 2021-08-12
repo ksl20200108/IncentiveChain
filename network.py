@@ -62,7 +62,7 @@ class Network:
         # self.clients = random_chosen(bootstrap)
         self.bc_lock = threading.Lock()
         self.stop_lock = threading.Lock()
-        self.experimenter_host = None    # need to be modified
+        self.experimenter_host = '192.168.1.0'
         self.first_start = True
         self.client_stop = False
         self.user_num = user_num
@@ -219,17 +219,18 @@ class Network:
                 "type_": RST_MSG,
                 "mode": self.bc.MODE, "propose": self.bc.PROPOSE,
                 "welfare": self.bc.current_social_welfare,
+                "user_num": self.user_num,
                 "remain_txs": len(self.bc.transaction_pool1)
             }).encode()
             self.send_msg(s, sender, True)    # close the connection after reporting
         else:
             log.info("there is no experimenter")
-            log.info("The node " + os.environ.get('LOCAL_IP') + "'s social welfare is " + str(self.bc.current_social_welfare))
-            log.info("In " + self.bc.MODE + " " + self.bc.PROPOSE + " " + str(self.user_num) + " users")
-            self.stop_lock.acquire()
-            self.client_stop = True
-            self.stop_lock.release()
-            # exit()
+        log.info("The node " + os.environ.get('LOCAL_IP') + "'s social welfare is " + str(self.bc.current_social_welfare))
+        log.info("In " + self.bc.MODE + " " + self.bc.PROPOSE + " " + str(self.user_num) + " users")
+        self.stop_lock.acquire()
+        self.client_stop = True
+        self.stop_lock.release()
+        # exit()
         log.info("client main loop stop")
         log.info("with blocks")
         log.info(str([str(i.show()) for i in self.bc.blocks]))
@@ -320,6 +321,7 @@ class Experimenter:
         self.FTET_Nsim_rtx = 0    # the remain transactions
         self.welfare_sum = {"FTETSIM": 0, "FTETNSIM": 0, "CURRENTSIM": 0, "CURRENTNSIM": 0}
         self.welfare_times = {"FTETSIM": 0, "FTETNSIM": 0, "CURRENTSIM": 0, "CURRENTNSIM": 0}
+        self.result = 0
         self.server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def start_service(self):
@@ -328,7 +330,18 @@ class Experimenter:
         port = 5678
         self.server_sock.bind((host, port))
         self.server_sock.listen(1024)
-        self.handle_loop()
+        # self.handle_loop()
+        t = threading.Thread(target=self.handle(), args=())
+        t.start()
+        t.join()
+
+    def handle(self):
+        log.info("Waiting for connection...")
+        conn, addr = self.server_sock.accept()
+        data = self.recv_msg(conn)
+        data = json.loads(data.decode())
+        log.info("The " + data["mode"] + data["propose"] + "'s social welfare is " + str(data["welfare"]))
+        log.info("with " + str(data["user_num"]) + " users and remains " + str(data["remain_txs"]) + " transactions")
 
     def handle_loop(self):
         while True:

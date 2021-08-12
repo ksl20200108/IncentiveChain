@@ -2,8 +2,34 @@ version: '3'
 
 services:
 
+  experimenter:
+    image: two_miners_test:1.0
+    container_name: experimenter
+    environment:
+      - LOCAL_IP=192.168.1.0
+    ports:
+      - 5678:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+      - ./experimenter.py:/run/experimenter.py
+    command: >
+        bash -c "python3 experimenter.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.0
+
+
   node1:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node1
     environment:
       - LOCAL_IP=192.168.1.1
@@ -27,6 +53,8 @@ services:
 
   node2:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node2
     environment:
       - LOCAL_IP=192.168.1.2
@@ -50,6 +78,8 @@ services:
 
   node3:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node3
     environment:
       - LOCAL_IP=192.168.1.3
@@ -73,6 +103,8 @@ services:
 
   node4:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node4
     environment:
       - LOCAL_IP=192.168.1.4
@@ -96,6 +128,8 @@ services:
 
   node5:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node5
     environment:
       - LOCAL_IP=192.168.1.5
@@ -119,6 +153,8 @@ services:
 
   node6:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node6
     environment:
       - LOCAL_IP=192.168.1.6
@@ -142,6 +178,8 @@ services:
 
   node7:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node7
     environment:
       - LOCAL_IP=192.168.1.7
@@ -165,6 +203,8 @@ services:
 
   node8:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node8
     environment:
       - LOCAL_IP=192.168.1.8
@@ -188,6 +228,8 @@ services:
 
   node9:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node9
     environment:
       - LOCAL_IP=192.168.1.9
@@ -211,6 +253,8 @@ services:
 
   node10:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node10
     environment:
       - LOCAL_IP=192.168.1.10
@@ -234,6 +278,8 @@ services:
 
   node11:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node11
     environment:
       - LOCAL_IP=192.168.1.11
@@ -257,6 +303,8 @@ services:
 
   node12:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node12
     environment:
       - LOCAL_IP=192.168.1.12
@@ -280,6 +328,8 @@ services:
 
   node13:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node13
     environment:
       - LOCAL_IP=192.168.1.13
@@ -303,6 +353,8 @@ services:
 
   node14:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node14
     environment:
       - LOCAL_IP=192.168.1.14
@@ -326,6 +378,8 @@ services:
 
   node15:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node15
     environment:
       - LOCAL_IP=192.168.1.15
@@ -349,6 +403,8 @@ services:
 
   node16:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node16
     environment:
       - LOCAL_IP=192.168.1.16
@@ -372,6 +428,8 @@ services:
 
   node17:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node17
     environment:
       - LOCAL_IP=192.168.1.17
@@ -395,6 +453,8 @@ services:
 
   node18:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node18
     environment:
       - LOCAL_IP=192.168.1.18
@@ -418,6 +478,8 @@ services:
 
   node19:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node19
     environment:
       - LOCAL_IP=192.168.1.19
@@ -441,6 +503,8 @@ services:
 
   node20:
     image: two_miners_test:1.0
+    depends_on:
+      - experimenter
     container_name: node20
     environment:
       - LOCAL_IP=192.168.1.20

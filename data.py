@@ -41,7 +41,7 @@ def create_peers(round):
     pickle.dump(peers, fp)
 
 
-create_data()
+# create_data()
 path = './data'
 number = 1
 user_num = 1600
