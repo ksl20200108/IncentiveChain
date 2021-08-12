@@ -7,7 +7,7 @@ WORKDIR /run
 # RUN pip3 install numpy
 
  RUN pip3 install  --upgrade pip \
-     && pip3 instlal numpy
+     && pip3 install numpy
 
 # CMD ["python3", "docker_server.py"]
 # CMD ["python3", "docker_client.py"]
