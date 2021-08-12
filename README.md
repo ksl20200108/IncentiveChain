@@ -19,3 +19,5 @@ cd IncentiveChain
 git checkout 20_miners_test
 
 python3 data.py
+
+docker-compose -f emm.yaml up -d
