@@ -35,3 +35,7 @@ docker logs -f experimenter
 # After experimenter logging result
 
 docker stop $(docker ps -q)
+
+# Experiment stop
+
+docker rm $(docker ps -a -q)
