@@ -164,6 +164,7 @@ class Network:
         else:
             set_round = 24
         peers.remove(os.environ.get('LOCAL_IP'))
+        peers = random.choices(peers, k=int(len(peers) / 3))
         r = 1
         while r <= set_round:    # if it's not while the blocks will increase out of limit
             """

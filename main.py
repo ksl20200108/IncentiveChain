@@ -11,10 +11,13 @@ def each_test(number, mode, propose, user_num):
         raise ValueError("Invalid mode or propose")
 
     path = './data'
-    fp = open(os.path.join(path, str(number) + type + "fee1" + str(user_num) + ".txt"), "rb")
-    fee1 = pickle.load(fp)
-    fp = open(os.path.join(path, str(number) + type + "fee2" + str(user_num) + ".txt"), "rb")
-    fee2 = pickle.load(fp)
+    fee1 = np.load(os.path.join(path, str(number) + type + "fee1" + str(user_num) + ".npy"))
+    fee2 = np.load(os.path.join(path, str(number) + type + "fee2" + str(user_num) + ".npy"))
+
+    # fp = open(os.path.join(path, str(number) + type + "fee1" + str(user_num) + ".txt"), "rb")
+    # fee1 = pickle.load(fp)
+    # fp = open(os.path.join(path, str(number) + type + "fee2" + str(user_num) + ".txt"), "rb")
+    # fee2 = pickle.load(fp)
 
     path = './peers'
     fp = open(os.path.join(path, "peers.txt"), "rb")
