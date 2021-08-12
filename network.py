@@ -171,7 +171,7 @@ class Network:
             """
             # mining
             self.bc.add_block_by_mining(self.bc_lock)
-            time.sleep(5)    # sleep for 1 minutes
+            time.sleep(60)    # sleep for 1 minutes
             log.info("Mined " + str(r) + " block(s)")
             # start connections thread -> require server's chain length
             threads = [None] * connection_num
@@ -214,15 +214,18 @@ class Network:
         if self.experimenter_host:
             log.info("there is experimenter")
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connect((self.experimenter_host, 5678))
-            sender = json.dumps({
-                "type_": RST_MSG,
-                "mode": self.bc.MODE, "propose": self.bc.PROPOSE,
-                "welfare": self.bc.current_social_welfare,
-                "user_num": self.user_num,
-                "remain_txs": len(self.bc.transaction_pool1)
-            }).encode()
-            self.send_msg(s, sender, True)    # close the connection after reporting
+            try:
+                s.connect((self.experimenter_host, 5678))
+                sender = json.dumps({
+                    "type_": RST_MSG,
+                    "mode": self.bc.MODE, "propose": self.bc.PROPOSE,
+                    "welfare": self.bc.current_social_welfare,
+                    "user_num": self.user_num,
+                    "remain_txs": len(self.bc.transaction_pool1)
+                }).encode()
+                self.send_msg(s, sender, True)    # close the connection after reporting
+            except:
+                log.info("The experimenter has been closed")
         else:
             log.info("there is no experimenter")
         log.info("The node " + os.environ.get('LOCAL_IP') + "'s social welfare is " + str(self.bc.current_social_welfare))
