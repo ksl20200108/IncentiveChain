@@ -526,6 +526,756 @@ services:
         ipv4_address: 192.168.1.20
 
 
+  node21:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node21
+    environment:
+      - LOCAL_IP=192.168.1.21
+    ports:
+      - 5699:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.21
+
+
+  node22:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node22
+    environment:
+      - LOCAL_IP=192.168.1.22
+    ports:
+      - 5700:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.22
+
+
+  node23:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node23
+    environment:
+      - LOCAL_IP=192.168.1.23
+    ports:
+      - 5701:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.23
+
+
+  node24:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node24
+    environment:
+      - LOCAL_IP=192.168.1.24
+    ports:
+      - 5702:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.24
+
+
+  node25:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node25
+    environment:
+      - LOCAL_IP=192.168.1.25
+    ports:
+      - 5703:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.25
+
+
+  node26:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node26
+    environment:
+      - LOCAL_IP=192.168.1.26
+    ports:
+      - 5704:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.26
+
+
+  node27:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node27
+    environment:
+      - LOCAL_IP=192.168.1.27
+    ports:
+      - 5705:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.27
+
+
+  node28:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node28
+    environment:
+      - LOCAL_IP=192.168.1.28
+    ports:
+      - 5706:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.28
+
+
+  node29:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node29
+    environment:
+      - LOCAL_IP=192.168.1.29
+    ports:
+      - 5707:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.29
+
+
+  node30:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node30
+    environment:
+      - LOCAL_IP=192.168.1.30
+    ports:
+      - 5708:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.30
+
+
+  node31:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node31
+    environment:
+      - LOCAL_IP=192.168.1.31
+    ports:
+      - 5709:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.31
+
+
+  node32:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node32
+    environment:
+      - LOCAL_IP=192.168.1.32
+    ports:
+      - 5710:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.32
+
+
+  node33:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node33
+    environment:
+      - LOCAL_IP=192.168.1.33
+    ports:
+      - 5711:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.33
+
+
+  node34:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node34
+    environment:
+      - LOCAL_IP=192.168.1.34
+    ports:
+      - 5712:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.34
+
+
+  node35:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node35
+    environment:
+      - LOCAL_IP=192.168.1.35
+    ports:
+      - 5713:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.35
+
+
+  node36:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node36
+    environment:
+      - LOCAL_IP=192.168.1.36
+    ports:
+      - 5714:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.36
+
+
+  node37:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node37
+    environment:
+      - LOCAL_IP=192.168.1.37
+    ports:
+      - 5715:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.37
+
+
+  node38:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node38
+    environment:
+      - LOCAL_IP=192.168.1.38
+    ports:
+      - 5716:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.38
+
+
+  node39:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node39
+    environment:
+      - LOCAL_IP=192.168.1.39
+    ports:
+      - 5717:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.39
+
+
+  node40:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node40
+    environment:
+      - LOCAL_IP=192.168.1.40
+    ports:
+      - 5718:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.40
+
+
+  node41:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node41
+    environment:
+      - LOCAL_IP=192.168.1.41
+    ports:
+      - 5719:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.41
+
+
+  node42:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node42
+    environment:
+      - LOCAL_IP=192.168.1.42
+    ports:
+      - 5720:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.42
+
+
+  node43:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node43
+    environment:
+      - LOCAL_IP=192.168.1.43
+    ports:
+      - 5721:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.43
+
+
+  node44:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node44
+    environment:
+      - LOCAL_IP=192.168.1.44
+    ports:
+      - 5722:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.44
+
+
+  node45:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node45
+    environment:
+      - LOCAL_IP=192.168.1.45
+    ports:
+      - 5723:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.45
+
+
+  node46:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node46
+    environment:
+      - LOCAL_IP=192.168.1.46
+    ports:
+      - 5724:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.46
+
+
+  node47:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node47
+    environment:
+      - LOCAL_IP=192.168.1.47
+    ports:
+      - 5725:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.47
+
+
+  node48:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node48
+    environment:
+      - LOCAL_IP=192.168.1.48
+    ports:
+      - 5726:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.48
+
+
+  node49:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node49
+    environment:
+      - LOCAL_IP=192.168.1.49
+    ports:
+      - 5727:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.49
+
+
+  node50:
+    image: two_miners_test:1.0
+    depends_on:
+      - experimenter
+    container_name: node50
+    environment:
+      - LOCAL_IP=192.168.1.50
+    ports:
+      - 5728:5678
+    privileged: true
+    volumes:
+      - ./main.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.50
+
+
 
 
 networks:

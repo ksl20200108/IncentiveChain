@@ -53,7 +53,7 @@ fee2 = pickle.load(fp)
 print(fee1)
 print(fee2)
 
-create_peers(20)
+create_peers(50)
 path = './peers'
 fp = open(os.path.join(path, "peers.txt"), "rb")
 peers = pickle.load(fp)
