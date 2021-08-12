@@ -20,6 +20,8 @@ git checkout 20_miners_test
 
 sudo apt install python3-numpy
 
+pip3 install --upgrade numpy
+
 python3 data.py
 
 docker-compose -f emm.yaml up -d
