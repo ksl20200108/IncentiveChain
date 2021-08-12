@@ -4,10 +4,10 @@ WORKDIR /run
 # change the work directory to "run", if there is no such directory the docker will create one
 # should not write the comments in the same line as "WORKDIR /run" or it will be included as the name of the directory
 
-RUN pip3 install numpy
+# RUN pip3 install numpy
 
-# RUN pip3 install ... \
-#     && pip3 instlal ...
+ RUN pip3 install  --upgrade pip \
+     && pip3 instlal numpy
 
 # CMD ["python3", "docker_server.py"]
 # CMD ["python3", "docker_client.py"]
