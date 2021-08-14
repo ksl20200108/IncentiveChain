@@ -1,0 +1,102 @@
+version: '3'
+
+services:
+
+  experimenter:
+    image: two_miners_test:1.0 
+    container_name: experimenter
+    environment:
+      - LOCAL_IP=192.168.1.0
+    ports:
+      - 5678:5678
+    privileged: true
+    volumes:
+      - ./network.py:/run/network.py
+      - ./experimenter.py:/run/experimenter.py
+    command: >
+        bash -c "python3 experimenter.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.0
+
+
+  node1:
+    image: two_miners_test:1.0 
+    depends_on:
+      - experimenter
+    container_name: node1
+    environment:
+      - LOCAL_IP=192.168.1.1
+    ports:
+      - 5679:5678
+    privileged: true
+    volumes:
+      - ./main2.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.1
+
+
+  node2:
+    image: two_miners_test:1.0 
+    depends_on:
+      - experimenter
+    container_name: node2
+    environment:
+      - LOCAL_IP=192.168.1.2
+    ports:
+      - 5680:5678
+    privileged: true
+    volumes:
+      - ./main2.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.2
+
+
+  node3:
+    image: two_miners_test:1.0 
+    depends_on:
+      - experimenter
+    container_name: node3
+    environment:
+      - LOCAL_IP=192.168.1.3
+    ports:
+      - 5681:5678
+    privileged: true
+    volumes:
+      - ./main2.py:/run/main.py
+      - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./data:/run/data
+      - ./peers:/run/peers
+    command: >
+        bash -c "python3 main.py"
+    networks:
+      static-network:
+        ipv4_address: 192.168.1.3
+
+
+
+
+networks: 
+  static-network:
+    ipam:
+      config:
+        - subnet: 192.168.0.0/16
+          gateway: 192.168.0.1
