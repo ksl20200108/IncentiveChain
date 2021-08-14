@@ -31,7 +31,10 @@ python3 data.py
 docker build -t two_miners_test:1.0 .
 
 # Start experiment
-docker-compose -f emm.yaml up -d
+
+chmod +x start_experiment.sh
+
+./start_experiment.sh
 
 # Check the result
 docker logs -f experimenter
