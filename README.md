@@ -37,7 +37,8 @@ chmod +x start_experiment.sh
 ./start_experiment.sh
 
 # Check the result
-docker logs -f experimenter
+
+The results are in $i$j files. $i\in [1, 8]$, $j\in [1, 10]$
 
 # After experimenter logging result
 docker stop $(docker ps -q)
