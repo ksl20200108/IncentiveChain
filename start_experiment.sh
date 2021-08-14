@@ -9,12 +9,14 @@
 \f0\fs29\fsmilli14667 \cf2 \cb3 \expnd0\expndtw0\kerning0
 #!/bin/bash\
 \
-for i in 1 2 3 4 5 6 7 8\
+for (( i=1; i<=8; i++ ))\
 do\
+  for (( j=1; j<=10; j++ ))
 	docker-compose -f $i.yaml up -d\
 	sleep 1440\
+	script $i$j.txt\
 	docker logs experimenter\
-	# add log to file\
+	exit\
 	docker stop $\{docker ps -a -q\}\
 	docker rm $\{docker ps -a -q\}\
 	sleep 30\
