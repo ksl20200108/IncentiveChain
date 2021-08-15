@@ -12,6 +12,6 @@ do
   exit
   docker stop ${docker ps -a -q}
   docker rm ${docker ps -a -q}
-  sleep 30
+  sleep 20
   # done
 done
