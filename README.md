@@ -40,4 +40,6 @@ script $results.txt
 
 # Check the result
 
-The results are in $i$j files. $i\in [1, 8]$, $j\in [1, 10]$
+exit
+
+vim results.txt
