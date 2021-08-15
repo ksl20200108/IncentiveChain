@@ -11,8 +11,8 @@ do
   docker logs experimenter
   exit
   docker stop ${docker ps -a -q}
-  sleep 7
+  sleep 10
   docker rm ${docker ps -a -q}
-  sleep 3
+  sleep 10
   # done
 done
