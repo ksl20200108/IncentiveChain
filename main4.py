@@ -24,7 +24,7 @@ def each_test(number, mode, propose, user_num):
     log.info("main function start server")
     t1 = threading.Thread(target=net.start_server_loop, args=(10,))  # only one argument -> not iterable -> add ","
     log.info("main function start client")
-    t2 = threading.Thread(target=net.start_client_loop, args=(1, peers))
+    t2 = threading.Thread(target=net.start_client_loop, args=(peers,))
     t1.start()
     t2.start()
     t1.join()

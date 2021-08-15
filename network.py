@@ -147,17 +147,14 @@ class Network:
     Client side
     """
 
-    def start_client_loop(self, connection_num, peers):
+    def start_client_loop(self, peers):
         log.info("start client loop")
-        t = threading.Thread(target=self.client_main_loop, args=(connection_num, peers))
+        t = threading.Thread(target=self.client_main_loop, args=(peers,))
         t.start()
         t.join()
         log.info("start client loop stop")
 
-    def client_main_loop(self, connection_num, peers):
-        """
-        :param connection_num: the defined number of connections
-        """
+    def client_main_loop(self, peers):
         log.info("client main loop")
         if self.bc.MODE == "FTET":
             set_round = 13
@@ -172,22 +169,22 @@ class Network:
             """
             # mining
             self.bc.add_block_by_mining(self.bc_lock)
-            time.sleep(5)    # sleep for 1 minutes
+            time.sleep(60)    # sleep for 1 minutes
             log.info("Mined " + str(r) + " block(s)")
             # start connections thread -> require server's chain length
-            threads = [None] * connection_num
-            self.results = [None] * connection_num
+            threads = [None] * len(peers)
+            self.results = [None] * len(peers)
             self.results_hosts = {}
             # select peers randomly
             # env_dist = os.environ
             # host = env_dist.get('LOCAL_IP')  # get the environment variable: LOCAL_IP
             # peers = random.sample()
             # recv results
-            for i in range(0, connection_num):
+            for i in range(0, len(peers)):
                 threads[i] = threading.Thread(target=self.acquire_peers_info, args=(i, peers[i]))
                 threads[i].start()
             # stop connections
-            for i in range(0, connection_num):
+            for i in range(0, len(peers)):
                 threads[i].join()
                 threads[i] = None    # de-reference the thread
             log.info("client send len request")

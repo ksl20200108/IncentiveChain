@@ -11,7 +11,13 @@ services:
       - 5678:5678
     privileged: true
     volumes:
+      - ./main2.py:/run/main.py
       - ./network.py:/run/network.py
+      - ./blockchain_structures.py:/run/blockchain_structures.py
+      - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
+      - ./data:/run/data
+      - ./peers:/run/peers
       - ./experimenter.py:/run/experimenter.py
     command: >
         bash -c "python3 experimenter.py"
@@ -21,7 +27,7 @@ services:
 
 
   node1:
-    image: two_miners_test:1.0 
+    image: two_miners_test:1.0
     depends_on:
       - experimenter
     container_name: node1
@@ -31,10 +37,12 @@ services:
       - 5679:5678
     privileged: true
     volumes:
+      - ./main.py:/run/main.py
       - ./main2.py:/run/main.py
       - ./network.py:/run/network.py
       - ./blockchain_structures.py:/run/blockchain_structures.py
       - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
       - ./data:/run/data
       - ./peers:/run/peers
     command: >
@@ -45,7 +53,7 @@ services:
 
 
   node2:
-    image: two_miners_test:1.0 
+    image: two_miners_test:1.0
     depends_on:
       - experimenter
     container_name: node2
@@ -55,10 +63,12 @@ services:
       - 5680:5678
     privileged: true
     volumes:
+      - ./main.py:/run/main.py
       - ./main2.py:/run/main.py
       - ./network.py:/run/network.py
       - ./blockchain_structures.py:/run/blockchain_structures.py
       - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
       - ./data:/run/data
       - ./peers:/run/peers
     command: >
@@ -69,7 +79,7 @@ services:
 
 
   node3:
-    image: two_miners_test:1.0 
+    image: two_miners_test:1.0
     depends_on:
       - experimenter
     container_name: node3
@@ -79,10 +89,12 @@ services:
       - 5681:5678
     privileged: true
     volumes:
+      - ./main.py:/run/main.py
       - ./main2.py:/run/main.py
       - ./network.py:/run/network.py
       - ./blockchain_structures.py:/run/blockchain_structures.py
       - ./random_functions.py:/run/random_functions.py
+      - ./tests.py:/run/tests.py
       - ./data:/run/data
       - ./peers:/run/peers
     command: >
@@ -94,9 +106,11 @@ services:
 
 
 
-networks: 
+networks:
   static-network:
     ipam:
       config:
         - subnet: 192.168.0.0/16
           gateway: 192.168.0.1
+
+ # docker-compose -f emm.yaml up -d
