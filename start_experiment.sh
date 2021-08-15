@@ -9,9 +9,9 @@ do
   # script $i$j.txt
   docker logs experimenter
   # exit
-  docker kill ${docker ps -a -q}
+  docker kill $(docker ps -q)
   sleep 10
-  docker rm ${docker ps -a -q}
+  docker rm $(docker ps -a -q)
   sleep 10
   # done
 done
