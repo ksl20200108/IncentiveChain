@@ -38,7 +38,6 @@ def write_yaml(main_num):
         print("      - " + str(5679 + i - 1) + ":5678")
         print("    privileged: true")
         print("    volumes:")
-        print("      - ./main.py:/run/main.py")
         print("      - ./main" + str(main_num)  + ".py:/run/main.py")
         print("      - ./network.py:/run/network.py")
         print("      - ./blockchain_structures.py:/run/blockchain_structures.py")

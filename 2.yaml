@@ -37,7 +37,6 @@ services:
       - 5679:5678
     privileged: true
     volumes:
-      - ./main.py:/run/main.py
       - ./main2.py:/run/main.py
       - ./network.py:/run/network.py
       - ./blockchain_structures.py:/run/blockchain_structures.py
@@ -63,7 +62,6 @@ services:
       - 5680:5678
     privileged: true
     volumes:
-      - ./main.py:/run/main.py
       - ./main2.py:/run/main.py
       - ./network.py:/run/network.py
       - ./blockchain_structures.py:/run/blockchain_structures.py
@@ -89,7 +87,6 @@ services:
       - 5681:5678
     privileged: true
     volumes:
-      - ./main.py:/run/main.py
       - ./main2.py:/run/main.py
       - ./network.py:/run/network.py
       - ./blockchain_structures.py:/run/blockchain_structures.py
