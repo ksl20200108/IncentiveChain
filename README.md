@@ -20,7 +20,7 @@ git clone https://github.com/ksl20200108/IncentiveChain.git
 
 cd IncentiveChain
 
-git checkout 50_miners_better_test
+git checkout automatical
 
 sudo apt install python3-numpy
 
