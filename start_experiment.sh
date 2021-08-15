@@ -5,7 +5,7 @@ do
   # for (( j=1; j<=10; j++ ))
   # do
   docker-compose -f $i.yaml up -d
-  sleep 1440
+  sleep 140
   # script $i$j.txt
   script $i.txt
   docker logs experimenter
