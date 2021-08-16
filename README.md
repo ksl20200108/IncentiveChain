@@ -38,6 +38,4 @@ chmod +x start_experiment.sh
 
 # Check the result
 
-exit
-
-vim results.txt
+vim $i.txt, i\in [1, 8]
