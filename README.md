@@ -34,7 +34,7 @@ docker build -t two_miners_test:1.0 .
 
 chmod +x start_experiment.sh
 
-script $results.txt
+script results.txt
 
 ./start_experiment.sh
 
