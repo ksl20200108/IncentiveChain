@@ -1,5 +1,5 @@
 #!/bin/bash
-# script $results.txt
+script results.txt
 for (( i=1; i<=8; i++ ))
 do
   # for (( j=1; j<=10; j++ ))
@@ -12,7 +12,7 @@ do
   docker kill $(docker ps -q)
   sleep 10
   docker rm $(docker ps -a -q)
-  sleep 10
+  sleep 5
   # done
 done
 exit
