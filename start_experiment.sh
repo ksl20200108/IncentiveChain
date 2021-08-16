@@ -15,3 +15,4 @@ do
   sleep 10
   # done
 done
+exit
