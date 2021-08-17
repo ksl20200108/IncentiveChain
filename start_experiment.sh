@@ -4,11 +4,11 @@ do
   for (( j=1; j<=10; j++ ))
   do
     docker-compose -f $i.yaml up -d
-    sleep 130
+    sleep 180    # please leave enough time
     docker logs experimenter &> $i$j.log &
     docker kill $(docker ps -q)
-    sleep 10
+    sleep 20
     docker rm $(docker ps -a -q)
-    sleep 5
+    sleep 20
   done
 done

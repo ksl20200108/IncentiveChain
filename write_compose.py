@@ -26,7 +26,7 @@ def write_yaml(main_num):
     print("        ipv4_address: 192.168.1." + str(0))
     print("\n")
 
-    for i in range(1, 6):    # 5 users
+    for i in range(1, 51):    # 50 users
         print("  node" + str(i) + ":")
         print("    image: two_miners_test:1.0 ")
         print("    depends_on:")
