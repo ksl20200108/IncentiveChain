@@ -5,7 +5,7 @@ do
   # do
   docker-compose -f $i.yaml up -d
   sleep 260
-  $(docker logs experimenter) > $i.txt
+  docker logs experimenter >> ($i)experimenter.log
   docker kill $(docker ps -q)
   sleep 10
   docker rm $(docker ps -a -q)
