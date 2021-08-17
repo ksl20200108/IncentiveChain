@@ -169,7 +169,7 @@ class Network:
             """
             # mining
             self.bc.add_block_by_mining(self.bc_lock)
-            time.sleep(10)    # sleep for 1 minutes
+            time.sleep(5)    # sleep for 1 minutes
             log.info("Mined " + str(r) + " block(s)")
             # start connections thread -> require server's chain length
             threads = [None] * len(peers)
