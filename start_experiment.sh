@@ -12,4 +12,3 @@ do
     sleep 5
   done
 done
-exit
