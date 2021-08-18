@@ -28,6 +28,10 @@ pip3 install --upgrade numpy
 
 python3 data.py
 
+python3 write_compose.py
+
+python3 write_main.py
+
 docker build -t two_miners_test:1.0 .
 
 # Start experiment
