@@ -14,6 +14,10 @@ sudo apt update
 
 sudo apt install python3.8
 
+sudo apt install python3-numpy
+
+pip3 install --upgrade numpy
+
 sudo -i
 
 git clone https://github.com/ksl20200108/IncentiveChain.git
@@ -21,10 +25,6 @@ git clone https://github.com/ksl20200108/IncentiveChain.git
 cd IncentiveChain
 
 git checkout final_50_random
-
-sudo apt install python3-numpy
-
-pip3 install --upgrade numpy
 
 docker build -t two_miners_test:1.0 .
 
