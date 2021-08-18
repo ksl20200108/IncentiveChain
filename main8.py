@@ -42,7 +42,7 @@ def main():
     # each_test(1, "CURRENT", "SIM", 1600)
     # each_test(1, "CURRENT", "SIM", 4800)
     # each_test(1, "CURRENT", "NSIM", 1600)
-    each_test("CURRENT", "NSIM", 4800)
+    each_test(1, "CURRENT", "NSIM", 4800)
 
 
 main()
