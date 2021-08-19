@@ -6,7 +6,7 @@ def write_yaml(main_num):
     f.write("\n")
 
     f.write("  experimenter" + ":\n")
-    f.write("    image: two_miners_test:1.0 \n")
+    f.write("    image: shulinke/two_miners_test:1.0 \n")
     f.write("    container_name: experimenter\n")
     f.write("    environment:\n")
     f.write("      - LOCAL_IP=192.168.1." + str(0) + "\n")
@@ -32,7 +32,7 @@ def write_yaml(main_num):
 
     for i in range(1, 151):    # 150 users
         f.write("  node" + str(i) + ":\n")
-        f.write("    image: two_miners_test:1.0 \n")
+        f.write("    image: shulinke/two_miners_test:1.0 \n")
         f.write("    depends_on:\n")
         f.write("      - experimenter\n")
         f.write("    container_name: node" + str(i) + "\n")
