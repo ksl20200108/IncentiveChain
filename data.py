@@ -68,7 +68,7 @@ fee2 = np.load(os.path.join(path, str(number) + type + "fee2" + str(user_num) + 
 print(fee1.tolist())
 print(fee2.tolist())
 
-create_peers(150)
+create_peers(100)
 path = './peers'
 fp = open(os.path.join(path, "peers.txt"), "rb")
 peers = pickle.load(fp)
