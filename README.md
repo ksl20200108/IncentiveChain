@@ -26,7 +26,7 @@ cd IncentiveChain
 
 git checkout final_150_random
 
-docker build -t two_miners_test:1.0 .      (or using docker pull shulinke/two_miners_test:1.0)
+docker build -t two_miners_test:1.0 .      (or using: docker pull shulinke/two_miners_test:1.0)
 
 python3 data.py
 
