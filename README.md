@@ -18,6 +18,14 @@ sudo apt install python3-numpy
 
 pip3 install --upgrade numpy
 
+# Install Docker & Docker-compose
+
+https://docs.docker.com/engine/install/ubuntu/
+
+https://docs.docker.com/compose/install/
+
+# Continue preparing
+
 sudo -i
 
 git clone https://github.com/ksl20200108/IncentiveChain.git
