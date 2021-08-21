@@ -63,7 +63,7 @@ def write_yaml(main_num):
     f.write("    ipam:\n")
     f.write("      config:\n")
     f.write("        - subnet: 192.168.0.0/16\n")
-    f.write("          gateway: 192.168.0.1\n")
+    # f.write("          gateway: 192.168.0.1\n")
 
     f.write("\n # docker-compose -f emm.yaml up -d\n")
 
