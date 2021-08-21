@@ -34,7 +34,7 @@ git clone https://github.com/ksl20200108/IncentiveChain.git
 
 cd IncentiveChain
 
-git checkout final_150_random
+git checkout final_150_sudo
 
 docker build -t two_miners_test:1.0 .      (or using: docker pull shulinke/two_miners_test:1.0)
 
