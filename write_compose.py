@@ -39,7 +39,7 @@ def write_yaml(main_num):
     f.write("\n")
     f.write("\n")
 
-    for i in range(1, 51):    # 5 users
+    for i in range(1, 101):    # 5 users
         f.write("  node" + str(i) + ":\n")
         f.write("    image: two_miners_test:1.0 \n")
         f.write("    depends_on:\n")
