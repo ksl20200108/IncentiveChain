@@ -66,6 +66,13 @@ def write_yaml(main_num):
         f.write("    networks:\n")
         f.write("      static-network:\n")
         f.write("        ipv4_address: 192.168.1." + str(i) + "\n")
+
+        f.write("    deploy")
+        f.write("      resources:")
+        f.write("        limits:")
+        f.write("          cpus: '0.005'")
+        f.write("          memory: 13M")
+
         f.write("\n")
         f.write("\n")
 
