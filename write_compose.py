@@ -1,4 +1,10 @@
 def write_yaml(main_num):
+
+    fee1 = ["", "FTETSIMfee11600", "FTETSIMfee14800", "FTETNSIMfee11600", "FTETNSIMfee14800",
+            "CURRENTSIMfee11600", "CURRENTSIMfee14800", "CURRENTNSIMfee11600", "CURRENTNSIMfee14800"]
+    fee2 = ["", "FTETSIMfee21600", "FTETSIMfee24800", "FTETNSIMfee21600", "FTETNSIMfee24800",
+            "CURRENTSIMfee21600", "CURRENTSIMfee24800", "CURRENTNSIMfee21600", "CURRENTNSIMfee24800"]
+
     f = open(str(main_num) + ".yaml", "w")
     f.write("version: '3'\n")
     f.write("\n")
@@ -19,7 +25,8 @@ def write_yaml(main_num):
     f.write("      - ./blockchain_structures.py:/run/blockchain_structures.py\n")
     f.write("      - ./random_functions.py:/run/random_functions.py\n")
     f.write("      - ./tests.py:/run/tests.py\n")
-    f.write("      - ./data:/run/data\n")
+    f.write("      - ./data" + str(main_num)[1:] + fee1[int(str(main_num)[0])] + ".npy" + ":/run/data\n")
+    f.write("      - ./data" + str(main_num)[1:] + fee2[int(str(main_num)[0])] + ".npy" + ":/run/data\n")
     f.write("      - ./peers:/run/peers\n")
     f.write("      - ./experimenter.py:/run/experimenter.py\n")
     f.write("    command: >\n")
@@ -30,7 +37,7 @@ def write_yaml(main_num):
     f.write("\n")
     f.write("\n")
 
-    for i in range(1, 51):    # 50 users
+    for i in range(1, 51):    # 5 users
         f.write("  node" + str(i) + ":\n")
         f.write("    image: two_miners_test:1.0 \n")
         f.write("    depends_on:\n")
@@ -47,7 +54,8 @@ def write_yaml(main_num):
         f.write("      - ./blockchain_structures.py:/run/blockchain_structures.py\n")
         f.write("      - ./random_functions.py:/run/random_functions.py\n")
         f.write("      - ./tests.py:/run/tests.py\n")
-        f.write("      - ./data:/run/data\n")
+        f.write("      - ./data" + str(main_num)[1:] + fee1[int(str(main_num)[0])] + ".npy" + ":/run/data\n")
+        f.write("      - ./data" + str(main_num)[1:] + fee2[int(str(main_num)[0])] + ".npy" + ":/run/data\n")
         f.write("      - ./peers:/run/peers\n")
         f.write("    command: >\n")
         f.write('        bash -c "python3 main.py"\n')
