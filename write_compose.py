@@ -25,8 +25,10 @@ def write_yaml(main_num):
     f.write("      - ./blockchain_structures.py:/run/blockchain_structures.py\n")
     f.write("      - ./random_functions.py:/run/random_functions.py\n")
     f.write("      - ./tests.py:/run/tests.py\n")
-    f.write("      - ./data" + str(main_num)[1:] + fee1[int(str(main_num)[0])] + ".npy" + ":/run/data\n")
-    f.write("      - ./data" + str(main_num)[1:] + fee2[int(str(main_num)[0])] + ".npy" + ":/run/data\n")
+    f.write("      - ./data" + str(main_num)[1:] + fee1[int(str(main_num)[0])] + ".npy" + ":/run/data"
+        + str(main_num)[1:] + fee1[int(str(main_num)[0])] + ".npy" + "\n")
+    f.write("      - ./data" + str(main_num)[1:] + fee2[int(str(main_num)[0])] + ".npy" + ":/run/data"
+        + str(main_num)[1:] + fee2[int(str(main_num)[0])] + ".npy" + "\n")
     f.write("      - ./peers:/run/peers\n")
     f.write("      - ./experimenter.py:/run/experimenter.py\n")
     f.write("    command: >\n")
@@ -54,8 +56,10 @@ def write_yaml(main_num):
         f.write("      - ./blockchain_structures.py:/run/blockchain_structures.py\n")
         f.write("      - ./random_functions.py:/run/random_functions.py\n")
         f.write("      - ./tests.py:/run/tests.py\n")
-        f.write("      - ./data" + str(main_num)[1:] + fee1[int(str(main_num)[0])] + ".npy" + ":/run/data\n")
-        f.write("      - ./data" + str(main_num)[1:] + fee2[int(str(main_num)[0])] + ".npy" + ":/run/data\n")
+        f.write("      - ./data" + str(main_num)[1:] + fee1[int(str(main_num)[0])] + ".npy" + ":/run/data"
+                + str(main_num)[1:] + fee1[int(str(main_num)[0])] + ".npy" + "\n")
+        f.write("      - ./data" + str(main_num)[1:] + fee2[int(str(main_num)[0])] + ".npy" + ":/run/data"
+                + str(main_num)[1:] + fee2[int(str(main_num)[0])] + ".npy" + "\n")
         f.write("      - ./peers:/run/peers\n")
         f.write("    command: >\n")
         f.write('        bash -c "python3 main.py"\n')
