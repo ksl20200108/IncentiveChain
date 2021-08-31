@@ -1,5 +1,5 @@
 # IncentiveChain
-A demo for
+A demo for IncentiveChain using overnode.
 
 # Experiment preparation
 sudo apt-get update
