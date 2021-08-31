@@ -38,8 +38,6 @@ python3 write_compose.py
 
 python3 write_main.py
 
-python3 write_overnode.py
-
 # Start experiment
 
 chmod +x start_experiment.sh
