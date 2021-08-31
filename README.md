@@ -1,6 +1,10 @@
 # IncentiveChain
 A demo for IncentiveChain using overnode.
 
+# Pre-Requisites
+
+Install Docker, Docker-Compose, overnode
+
 # Experiment preparation
 sudo apt-get update
 
