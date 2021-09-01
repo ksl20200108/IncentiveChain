@@ -5,6 +5,21 @@ A demo for IncentiveChain using overnode.
 
 Install Docker, Docker-Compose, overnode
 
+# Launching Overnode
+
+host1 > overnode launch --id 1 --token my-cluster-password
+
+host2 > overnode launch --id 2 --token my-cluster-password
+
+host3 > overnode launch --id 3 --token my-cluster-password
+
+host1 > overnode launch --id 1 --token my-cluster-password host1 host2 host3
+
+host2 > overnode launch --id 2 --token my-cluster-password host1 host2 host3
+
+host3 > overnode launch --id 3 --token my-cluster-password host1 host2 host3
+
+
 # Experiment preparation
 sudo apt-get update
 
