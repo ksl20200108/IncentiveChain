@@ -3,12 +3,12 @@ for (( i=1; i<=8; i++ ))
 do
   for (( j=1; j<=10; j++ ))
   do
-    docker-compose -f $i$j.yaml up -d
-    sleep 240    # please leave enough time + 20 for creating containers
+    overnode up
+    sleep 240
     docker logs experimenter &> $i$j.log &
-    docker kill $(docker ps -q)
-    sleep 40
-    docker rm $(docker ps -a -q)
-    sleep 40
+    overnode up --remove-orphans
+    sleep 20
+    docker ps -a &> remain_c.txt &
+    python3 write_overnode.py
   done
 done
