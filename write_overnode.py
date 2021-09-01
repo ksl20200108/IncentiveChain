@@ -6,7 +6,7 @@ def write_overnode_yaml():
     f.close()
     f = open("overnode.yml", "w")
     f.write("id: my-overnode-project\n")
-    f.write("version: 3\n")
+    f.write("version: 3.7\n")
     if int(num_str[1:]) < 10:
         num_str = str(int(num_str) + 1)
         f.write("experiment" + num_str + ":\n")

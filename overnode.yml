@@ -1,4 +1,4 @@
 id: my-overnode-project
-version: 3
+version: 3.7
 experiment11:
     ./11.yaml: *
