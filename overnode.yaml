@@ -1,4 +1,0 @@
-id: my-overnode-project
-version: 3
-experiment11:
-    ./11.yaml: *
