@@ -476,6 +476,13 @@ class Peer_Handler:
     https://stackoverflow.com/questions/17667903/python-socket-receive-large-amount-of-data
     """
 
+    def send_msg(self, sock, msg, close=False):
+        # Prefix each message with a 4-byte length (network byte order)
+        msg = struct.pack('>I', len(msg)) + msg
+        sock.sendall(msg)
+        if close:
+            sock.close()
+
     def recv_msg(self, sock):
         # Read message length and unpack it into an integer
         raw_msglen = self.all_recv(sock, 4)
