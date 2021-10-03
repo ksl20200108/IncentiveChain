@@ -469,7 +469,7 @@ class Peer_Handler:
         self.peer_list.append(addr[0])
         self.peer_list_lock.release()
         data = json.loads(data.decode())
-        log.info("changed peer list: " + str(self.peer_list))
+        log.info("changed peer list: " + str(len(self.peer_list)))
         if data["type_"] == 7:
             sender = json.dumps({"type_": IP_MSG, "data": addr[0]}).encode()
             self.send_msg(conn, sender)
