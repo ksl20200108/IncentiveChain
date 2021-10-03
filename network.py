@@ -303,7 +303,7 @@ class Network:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.bind((host, port))
         s.listen(2)
-        conn, addr = self.s.accept()
+        conn, addr = s.accept()
         data = self.recv_msg(conn)
         data = json.loads(data.decode())
         if data["type_"] != PEER_MSG:
