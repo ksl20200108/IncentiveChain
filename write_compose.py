@@ -77,8 +77,11 @@ def write_yaml(main_num):
         f.write("      - experimenter\n")
         f.write("      - peerhandler\n")
         f.write("    container_name: node" + str(i) + "\n")
-        f.write("    environment:\n")
-        f.write("      - LOCAL_IP=192.168.1." + str(i) + "\n")
+
+        """old"""
+        # f.write("    environment:\n")
+        # f.write("      - LOCAL_IP=192.168.1." + str(i) + "\n")
+
         f.write("    ports:\n")
         f.write("      - " + str(5679 + i - 1) + ":5678\n")
         f.write("    privileged: true\n")
