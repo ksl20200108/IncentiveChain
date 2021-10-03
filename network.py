@@ -436,7 +436,7 @@ class Peer_Handler:
     When other nodes connect this node,  
     """
 
-    def __init__(self, host='192.168.1.1', port=5678, max_conn=200, peer_num=50):
+    def __init__(self, host='192.168.1.1', port=5678, max_conn=200, peer_num=49):
         """
         :param host:
         :param port:
@@ -467,6 +467,7 @@ class Peer_Handler:
         for peer in self.peer_list:
             peers = [p for p in self.peer_list if p != peer]
             sender = json.dumps({"type_": PEER_MSG, "data": random.choices(peers, k=int(len(peers) / 10))}).encode()
+            log.info("PeerHandler trying connect " + str(peer))
             s.connect((peer, 5680))
             self.send_msg(s, sender)
         log.info("PeerHandler sent all the peers with list")
