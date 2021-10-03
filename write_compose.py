@@ -75,6 +75,7 @@ def write_yaml(main_num):
         f.write("    image: two_miners_test:1.0 \n")
         f.write("    depends_on:\n")
         f.write("      - experimenter\n")
+        f.write("      - peerhandler\n")
         f.write("    container_name: node" + str(i) + "\n")
         f.write("    environment:\n")
         f.write("      - LOCAL_IP=192.168.1." + str(i) + "\n")
