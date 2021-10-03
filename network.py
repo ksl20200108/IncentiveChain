@@ -450,6 +450,7 @@ class Peer_Handler:
 
     def main_loop(self):
         while len(self.peer_list) < self.peer_num - 1:
+            log.info("PeerHandler loop: " + str(len(self.peer_list)) + " < " + str(self.peer_num - 1))
             conn, addr = self.s.accept()
             t = threading.Thread(target=self.handler, args=(conn, addr))
             t.start()
