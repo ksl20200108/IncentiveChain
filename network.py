@@ -451,9 +451,6 @@ class Peer_Handler:
         self.s.bind((host, port))
         self.s.listen(max_conn)
         log.info("PeerHandler initialization success")
-        t = threading.Thread(target=self.main_loop, args=())
-        t.start()
-        t.join()
 
     def main_loop(self):
         while len(self.peer_list) < self.peer_num - 1:
