@@ -464,11 +464,11 @@ class Peer_Handler:
     def handler(self, conn, addr):
         data = self.recv_msg(conn)
         self.peer_list_lock.acquire()
-        self.peer_list.append(addr)
+        self.peer_list.append(addr[0])
         self.peer_list_lock.release()
         data = json.loads(data.decode())
         if data["type_"] == 7:
-            sender = json.dumps({"type_": IP_MSG, "data": addr}).encode()
+            sender = json.dumps({"type_": IP_MSG, "data": addr[0]}).encode()
             self.send_msg(conn, sender)
 
     """
