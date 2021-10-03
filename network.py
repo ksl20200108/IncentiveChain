@@ -155,7 +155,7 @@ class Network:
 
     def start_client_loop(self):
         log.info("start client loop")
-        t = threading.Thread(target=self.client_main_loop, args=(self.peers,))
+        t = threading.Thread(target=self.client_main_loop, args=())
         t.start()
         t.join()
         log.info("start client loop stop")
