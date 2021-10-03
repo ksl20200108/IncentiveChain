@@ -287,6 +287,7 @@ class Network:
     def get_ip_and_peers(self, host='192.168.1.1', port=5678):
         """get ip"""
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.connect((host, port))
         sender = json.dumps({"type_": GET_IP_MSG, "data": None}).encode()
         self.send_msg(s, sender)
@@ -302,7 +303,7 @@ class Network:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.bind((host, port))
-        s.listen(2)
+        s.listen(100)
         conn, addr = s.accept()
         data = self.recv_msg(conn)
         data = json.loads(data.decode())
@@ -459,14 +460,15 @@ class Peer_Handler:
             t = threading.Thread(target=self.handler, args=(conn, addr))
             t.start()
         self.s.close()
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         log.info("PeerHandler collected all the ip addresses")
         for peer in self.peer_list:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             peers = [p for p in self.peer_list if p != peer]
             sender = json.dumps({"type_": PEER_MSG, "data": random.choices(peers, k=int(len(peers) / 10))}).encode()
             log.info("PeerHandler trying connect " + str(peer))
             s.connect((peer, 5680))
             self.send_msg(s, sender)
+            s.close()
         log.info("PeerHandler sent all the peers with list")
 
     def handler(self, conn, addr):
