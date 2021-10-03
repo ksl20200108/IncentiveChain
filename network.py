@@ -298,7 +298,7 @@ class Network:
         self.my_ip = receiver["data"]
         log.info("get my ip: " + str(self.my_ip))
         """get peer"""
-        host, port = self.my_ip, 5678
+        host, port = self.my_ip, 5680
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.bind((host, port))
@@ -309,6 +309,7 @@ class Network:
         if data["type_"] != PEER_MSG:
             raise ValueError("Startup side: did not receive peer_list message for request")
         self.peers = data["data"]
+        s.close()
         log.info("get peers: " + str(self.peers))
 
     """
@@ -466,7 +467,7 @@ class Peer_Handler:
         for peer in self.peer_list:
             peers = [p for p in self.peer_list if p != peer]
             sender = json.dumps({"type_": PEER_MSG, "data": random.choices(peers, k=int(len(peers) / 10))}).encode()
-            s.connect((peer, 5678))
+            s.connect((peer, 5680))
             self.send_msg(s, sender)
         log.info("PeerHandler sent all the peers with list")
 
