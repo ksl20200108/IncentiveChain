@@ -5,23 +5,16 @@ tbt: to be tested
 tbd: to be deleted
 tbm: to be modified
 tba: to be added
-    Three and four nodes test (two miners and one experimenter, three miners and one experimenter)
-    10 nodes test
-    20 nodes test
-    50 nodes test
-    100 nodes test
 """
-
 
 import socket
 import threading
-import time    # for sleeping between network communication
-import os    # to get the container's predefined ip address
-import random    # to select random peers from peers list
-import json    # to transform data into json string
-import struct    # for adding prefix indicating message length
+import time  # for sleeping between network communication
+import os  # to get the container's predefined ip address
+import random  # to select random peers from peers list
+import json  # to transform data into json string
+import struct  # for adding prefix indicating message length
 from blockchain_structures import *
-
 
 """
 Message Types:
@@ -39,9 +32,13 @@ BC_MSG = 4
 RST_MSG = 5
 END_MSG = 6
 
+"""new"""
+GET_IP_MSG = 7
+IP_MSG = 8
+PEER_MSG = 9
+
 
 class Network:
-
     """
     Miner's network
     """
@@ -58,8 +55,7 @@ class Network:
         log.info("The current Mode and Propose are % s and %s" % (mode, propose))
         self.bc = Blockchain(fees1, fees2, mode, propose)
         self.server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)    # let not call addr already in use
-        # self.clients = random_chosen(bootstrap)
+        self.server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # let not call addr already in use
         self.bc_lock = threading.Lock()
         self.stop_lock = threading.Lock()
         self.experimenter_host = '192.168.1.0'
@@ -67,6 +63,10 @@ class Network:
         self.client_stop = False
         self.user_num = user_num
         log.info("Initializing Success")
+
+        """new"""
+        self.my_ip = None
+        self.peers = None
 
     """
     Server side
@@ -79,8 +79,14 @@ class Network:
         self.PORT: all the peers communicate between each other through this port, predefined in compose yml as 5678
         """
         log.info("start server loop")
-        env_dist = os.environ
-        host = env_dist.get('LOCAL_IP')  # get the environment variable: LOCAL_IP
+
+        """old"""
+        # env_dist = os.environ
+        # host = env_dist.get('LOCAL_IP')  # get the environment variable: LOCAL_IP
+
+        """new"""
+        host = self.my_ip
+
         port = 5678
         self.server_sock.bind((host, port))
         self.server_sock.listen(max_conn)
@@ -108,7 +114,7 @@ class Network:
         self.server_sock.close()
         log.info("server main loop stop")
 
-    def server_handler(self, conn, addr):    # max_recv can be 61995
+    def server_handler(self, conn, addr):  # max_recv can be 61995
         """
         :param conn:
         :param addr:
@@ -147,46 +153,39 @@ class Network:
     Client side
     """
 
-    def start_client_loop(self, peers):
+    def start_client_loop(self):
         log.info("start client loop")
-        t = threading.Thread(target=self.client_main_loop, args=(peers,))
+        t = threading.Thread(target=self.client_main_loop, args=(self.peers,))
         t.start()
         t.join()
         log.info("start client loop stop")
 
-    def client_main_loop(self, peers):
+    def client_main_loop(self):
         log.info("client main loop")
         if self.bc.MODE == "FTET":
             set_round = 13
         else:
             set_round = 24
-        peers.remove(os.environ.get('LOCAL_IP'))
-        peers = random.choices(peers, k=int(len(peers) / 10))
         r = 1
-        while r <= set_round:    # if it's not while the blocks will increase out of limit
+        while r <= set_round:  # if it's not while the blocks will increase out of limit
             """
             In one experiment, stop loop after mining defined number of blocks
             """
             # mining
             self.bc.add_block_by_mining(self.bc_lock)
-            time.sleep(5)    # sleep for 1 minutes
+            time.sleep(5)  # sleep for 1 minutes
             log.info("Mined " + str(r) + " block(s)")
             # start connections thread -> require server's chain length
-            threads = [None] * len(peers)
-            self.results = [None] * len(peers)
+            threads = [None] * len(self.peers)
+            self.results = [None] * len(self.peers)
             self.results_hosts = {}
-            # select peers randomly
-            # env_dist = os.environ
-            # host = env_dist.get('LOCAL_IP')  # get the environment variable: LOCAL_IP
-            # peers = random.sample()
-            # recv results
-            for i in range(0, len(peers)):
-                threads[i] = threading.Thread(target=self.acquire_peers_info, args=(i, peers[i]))
+            for i in range(0, len(self.peers)):
+                threads[i] = threading.Thread(target=self.acquire_peers_info, args=(i, self.peers[i]))
                 threads[i].start()
             # stop connections
-            for i in range(0, len(peers)):
+            for i in range(0, len(self.peers)):
                 threads[i].join()
-                threads[i] = None    # de-reference the thread
+                threads[i] = None  # de-reference the thread
             log.info("client send len request")
             self.first_start = False
             # compare with the longest (save ipv4 address)
@@ -198,8 +197,8 @@ class Network:
                          + " and local length " + str(self.bc.blocks[-1].index))
                 data = self.acquire_peer_chain(self.results_hosts[max_length])
                 # log.info("client receive chain: " + str(data))
-                self.results_hosts = None    # de-reference the hosts dictionary
-                self.bc = Blockchain.deserialize(data)    # update local chain
+                self.results_hosts = None  # de-reference the hosts dictionary
+                self.bc = Blockchain.deserialize(data)  # update local chain
                 log.info("client update local chain")
 
             r = self.bc.blocks[-1].index + 1
@@ -221,12 +220,13 @@ class Network:
                     "user_num": self.user_num,
                     "remain_txs": len(self.bc.transaction_pool1)
                 }).encode()
-                self.send_msg(s, sender, True)    # close the connection after reporting
+                self.send_msg(s, sender, True)  # close the connection after reporting
             except:
                 log.info("The experimenter has been closed")
         else:
             log.info("there is no experimenter")
-        log.info("The node " + os.environ.get('LOCAL_IP') + "'s social welfare is " + str(self.bc.current_social_welfare))
+        log.info(
+            "The node " + os.environ.get('LOCAL_IP') + "'s social welfare is " + str(self.bc.current_social_welfare))
         log.info("In " + self.bc.MODE + " " + self.bc.PROPOSE + " " + str(self.user_num) + " users")
         self.stop_lock.acquire()
         self.client_stop = True
@@ -244,15 +244,15 @@ class Network:
         """
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         log.info("Trying connect")
-        if self.first_start:    # in case that the target peer is not started yet
+        if self.first_start:  # in case that the target peer is not started yet
             while True:
                 try:
                     s.connect((host, port))
                     break
                 except:
-                    time.sleep(1)   # sleep for a while, wait the target peer
+                    time.sleep(1)  # sleep for a while, wait the target peer
         else:
-            s.connect((host, port))    # must add this otherwise it will not connect again when it is not first_start
+            s.connect((host, port))  # must add this otherwise it will not connect again when it is not first_start
         log.info("Successfully connected")
         # require server's chain length
         sender = json.dumps({"type_": LEN_REQ, "data": None}).encode()
@@ -278,6 +278,38 @@ class Network:
         if receiver["type_"] != BC_MSG:
             raise ValueError("Client side: did not receive length message for length request")
         return receiver["data"]
+
+    """new"""
+    """
+    Startup side
+    """
+
+    def get_ip_and_peers(self, host='192.168.1.1', port=5678):
+        """get ip"""
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((host, port))
+        sender = json.dumps({"type_": GET_IP_MSG, "data": None}).encode()
+        self.send_msg(s, sender)
+        receiver = self.recv_msg(s)
+        s.close()
+        receiver = json.loads(receiver.decode())
+        if receiver["type_"] != IP_MSG:
+            raise ValueError("Startup side: did not receive ip message for ip request")
+        self.my_ip = receiver["data"]
+        log.info("get my ip: " + str(self.my_ip))
+        """get peer"""
+        host, port = self.my_ip, 5678
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        s.bind((host, port))
+        s.listen(2)
+        conn, addr = self.s.accept()
+        data = self.recv_msg(conn)
+        data = json.loads(data.decode())
+        if data["type_"] != PEER_MSG:
+            raise ValueError("Startup side: did not receive peer_list message for request")
+        self.peers = data["data"]
+        log.info("get peers: " + str(self.peers))
 
     """
     Methods from the internet
@@ -312,14 +344,13 @@ class Network:
 
 
 class Experimenter:
-
     """
     A special server which collects each experiment's result
     """
 
     def __init__(self):
-        self.FTET_Sim_rtx = 0    # the remain transactions
-        self.FTET_Nsim_rtx = 0    # the remain transactions
+        self.FTET_Sim_rtx = 0  # the remain transactions
+        self.FTET_Nsim_rtx = 0  # the remain transactions
         self.welfare_sum = {"FTETSIM": 0, "FTETNSIM": 0, "CURRENTSIM": 0, "CURRENTNSIM": 0}
         self.welfare_times = {"FTETSIM": 0, "FTETNSIM": 0, "CURRENTSIM": 0, "CURRENTNSIM": 0}
         self.result = 0
@@ -370,6 +401,75 @@ class Experimenter:
         log.info("The average social welfare of Current blockchain mechanism and non-simultaneous proposing is:")
         log.info(self.welfare_sum["CURRENTNSIM"] / self.welfare_times["CURRENTNSIM"])
         exit()
+
+    """
+    Methods from the internet
+    https://stackoverflow.com/questions/17667903/python-socket-receive-large-amount-of-data
+    """
+
+    def recv_msg(self, sock):
+        # Read message length and unpack it into an integer
+        raw_msglen = self.all_recv(sock, 4)
+        if not raw_msglen:
+            return None
+        msglen = struct.unpack('>I', raw_msglen)[0]
+        # Read the message data
+        return self.all_recv(sock, msglen)
+
+    def all_recv(self, sock, n):
+        # Helper function to recv n bytes or return None if EOF is hit
+        data = bytearray()
+        while len(data) < n:
+            packet = sock.recv(n - len(data))
+            if not packet:
+                return None
+            data.extend(packet)
+        return data
+
+
+"""new"""
+class Peer_Handler:
+    """
+    The node which collect all peer IP.
+    Collect IP and send random peer list which contains certain number of peers to nodes.
+    When other nodes connect this node,  
+    """
+
+    def __init__(self, host='192.168.1.1', port=5678, max_conn=200, peer_num=200):
+        self.peer_list = []
+        self.peer_num = peer_num
+        self.peer_list_lock = threading.Lock()
+        self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.s.bind((host, port))
+        self.s.listen(max_conn)
+        t = threading.Thread(target=self.main_loop, args=())
+        t.start()
+        t.join()
+
+    def main_loop(self):
+        while len(self.peer_list) < self.peer_num:
+            conn, addr = self.s.accept()
+            t = threading.Thread(target=self.handler, args=(conn, addr))
+            t.start()
+            time.sleep(1)
+        self.s.close()
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        for peer in self.peer_list:
+            peers = [p for p in self.peer_list if p != peer]
+            sender = json.dumps({"type_": PEER_MSG, "data": random.choices(peers, k=int(len(peers) / 10))}).encode()
+            s.connect((peer, 5678))
+            self.send_msg(s, sender)
+
+    def handler(self, conn, addr):
+        data = self.recv_msg(conn)
+        self.peer_list_lock.acquire()
+        self.peer_list.append(addr)
+        self.peer_list_lock.release()
+        data = json.loads(data.decode())
+        if data["type_"] == 7:
+            sender = json.dumps({"type_": IP_MSG, "data": addr}).encode()
+            self.send_msg(conn, sender)
 
     """
     Methods from the internet
