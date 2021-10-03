@@ -443,6 +443,7 @@ class Peer_Handler:
         self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.s.bind((host, port))
         self.s.listen(max_conn)
+        log.info("PeerHandler initialization success")
         t = threading.Thread(target=self.main_loop, args=())
         t.start()
         t.join()
@@ -455,11 +456,13 @@ class Peer_Handler:
             time.sleep(1)
         self.s.close()
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        log.info("PeerHandler collected all the ip addresses")
         for peer in self.peer_list:
             peers = [p for p in self.peer_list if p != peer]
             sender = json.dumps({"type_": PEER_MSG, "data": random.choices(peers, k=int(len(peers) / 10))}).encode()
             s.connect((peer, 5678))
             self.send_msg(s, sender)
+        log.info("PeerHandler sent all the peers with list")
 
     def handler(self, conn, addr):
         data = self.recv_msg(conn)
