@@ -39,9 +39,13 @@ def write_yaml(main_num):
     f.write("      - ./experimenter.py:/run/experimenter.py\n")
     f.write("    command: >\n")
     f.write('        bash -c "python3 experimenter.py"\n')
+
+    """new"""
     f.write("    networks:\n")
-    f.write("      backend:\n")
-    f.write("        ipv4_address: 192.168.1." + str(0) + "\n")
+    f.write("      - test\n")
+    f.write("    cap_add:\n")
+    f.write("      - NET_ADMIN\n")
+
     f.write("\n")
     f.write("\n")
 
@@ -73,17 +77,21 @@ def write_yaml(main_num):
     f.write("      - ./peer_handler.py:/run/peer_handler.py\n")
     f.write("    command: >\n")
     f.write('        bash -c "python3 peer_handler.py"\n')
+
+    """old"""
     f.write("    networks:\n")
-    f.write("      backend:\n")
-    f.write("        ipv4_address: 192.168.1." + str(1) + "\n")
+    f.write("      - test\n")
+    f.write("    cap_add:\n")
+    f.write("      - NET_ADMIN\n")
+
     f.write("\n")
     f.write("\n")
 
     """new"""
     f.write("networks: \n")
     f.write("  test:\n")
-    f.write("  external: true\n")
-    f.write("  name: test\n")
+    f.write("    external: true\n")
+    f.write("    name: test\n")
 
     f.close()
 
