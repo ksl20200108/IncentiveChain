@@ -30,7 +30,9 @@ docker build -t two_miners_test:1.0 .
 
 python3 data.py
 
-python3 write_compose.py
+python3 write_static_compose.py
+
+python3 write_dynamic_compose.py
 
 python3 write_main.py
 
