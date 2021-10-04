@@ -24,7 +24,7 @@ git clone https://github.com/ksl20200108/IncentiveChain.git
 
 cd IncentiveChain
 
-git checkout dynamic_50
+git checkout lighter_50
 
 docker build -t two_miners_test:1.0 .
 
