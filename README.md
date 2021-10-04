@@ -34,11 +34,17 @@ python3 write_compose.py
 
 python3 write_main.py
 
-# Start experiment
+# Automatical Experiment
 
 chmod +x start_experiment.sh
 
 nohup ./start_experiment.sh &
+
+# Test Experiment
+
+docker network create --driver overlay --subnet 192.168.0.0/16 --gateway 192.168.0.1 --attachable test
+
+docker stack deploy -c 11.yaml static-ip
 
 # Check the result
 
