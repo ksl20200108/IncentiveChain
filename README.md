@@ -52,6 +52,12 @@ docker stack deploy -c 11static.yaml static-ip
 
 docker stack deploy -c 11dynamic.yaml experiment
 
+# Check Test Status
+
+docker service ls
+
+docker service ps <service name>
+
 # Stop Test
 
 docker stack rm experiment
