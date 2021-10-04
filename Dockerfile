@@ -13,7 +13,7 @@ WORKDIR /run
      && pip3 install numpy \
      && chmod +x /run/start.sh
 
- ENTRYPOINT /start.sh
+ ENTRYPOINT /run/start.sh
 
 # CMD ["python3", "docker_server.py"]
 # CMD ["python3", "docker_client.py"]

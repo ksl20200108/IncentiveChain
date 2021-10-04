@@ -52,7 +52,7 @@ def write_yaml(main_num):
     f.write("networks: \n")
     f.write("  test:\n")
     f.write("  external: true\n")
-    f.write("  name: test\n")
+    # f.write("  name: test\n")
 
     f.write("\n # docker-compose -f emm.yaml up -d\n")
 

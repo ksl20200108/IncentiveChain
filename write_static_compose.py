@@ -24,7 +24,10 @@ def write_yaml(main_num):
 
     f.write("    ports:\n")
     f.write("      - " + str(5679 + 0 - 1) + ":5678\n")
+
+    """old"""
     f.write("    privileged: true\n")
+
     f.write("    volumes:\n")
     f.write("      - ./main" + str(main_num)  + ".py:/run/main.py\n")
     f.write("      - ./network.py:/run/network.py\n")
@@ -61,7 +64,10 @@ def write_yaml(main_num):
 
     f.write("    ports:\n")
     f.write("      - " + str(5679 + 1 - 1) + ":5678\n")
-    f.write("    privileged: true\n")
+
+    """old"""
+    # f.write("    privileged: true\n")
+
     f.write("    volumes:\n")
     f.write("      - ./main" + str(main_num) + ".py:/run/main.py\n")
     f.write("      - ./network.py:/run/network.py\n")
@@ -91,7 +97,7 @@ def write_yaml(main_num):
     f.write("networks: \n")
     f.write("  test:\n")
     f.write("    external: true\n")
-    f.write("    name: test\n")
+    # f.write("    name: test\n")
 
     f.close()
 
