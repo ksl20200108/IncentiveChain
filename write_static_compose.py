@@ -5,7 +5,9 @@ def write_yaml(main_num):
     fee2 = ["", "FTETSIMfee21600", "FTETSIMfee24800", "FTETNSIMfee21600", "FTETNSIMfee24800",
             "CURRENTSIMfee21600", "CURRENTSIMfee24800", "CURRENTNSIMfee21600", "CURRENTNSIMfee24800"]
 
-    f = open(str(main_num) + ".yaml", "w")
+    """new"""
+    f = open(str(main_num) + "static.yaml", "w")
+
     f.write("version: '3'\n")
     f.write("\n")
     f.write('services:\n')
