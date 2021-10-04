@@ -48,7 +48,7 @@ docker swarm init
 
 docker network create --driver overlay --subnet 192.168.0.0/16 --gateway 192.168.0.1 --attachable backend
 
-docker stack deploy -c 11static.yml static-ip
+docker stack deploy -c 11static.yaml static-ip
 
 docker stack deploy -c 11dynamic.yaml experiment
 
