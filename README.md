@@ -26,7 +26,7 @@ cd IncentiveChain
 
 git checkout dynamic_50
 
-docker build -t two_miners_test:1.0 .
+docker build -t test .
 
 python3 data.py
 
