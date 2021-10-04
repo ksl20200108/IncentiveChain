@@ -36,11 +36,17 @@ python3 write_dynamic_compose.py
 
 python3 write_main.py
 
-# Start experiment
+# Automatical experiment
 
 chmod +x start_experiment.sh
 
 nohup ./start_experiment.sh &
+
+# Test Experiment
+
+docker-compose -f 11static.yaml up -d
+
+docker-compose -f 11dynamic.yaml up -d
 
 # Check the result
 
