@@ -24,31 +24,21 @@ git clone https://github.com/ksl20200108/IncentiveChain.git
 
 cd IncentiveChain
 
-git checkout dynamic_50
+git checkout lighter_50
 
 docker build -t two_miners_test:1.0 .
 
 python3 data.py
 
-python3 write_static_compose.py
-
-python3 write_dynamic_compose.py
+python3 write_compose.py
 
 python3 write_main.py
 
-# Automatic Experiment
+# Start experiment
 
 chmod +x start_experiment.sh
 
 nohup ./start_experiment.sh &
-
-# Test Experiment
-
-docker swarm init
-
-docker network create --driver overlay --subnet 192.168.0.0/16 --gateway 192.168.0.1 --attachable backend
-
-docker stack deploy -c 11static.yaml static-ip
 
 # Check the result
 
