@@ -17,7 +17,12 @@ def write_yaml(main_num):
     f.write("    image: two_miners_test:1.0 \n")
     f.write("    container_name: experimenter\n")
     f.write("    environment:\n")
-    f.write("      - LOCAL_IP=192.168.1." + str(0) + "\n")
+
+    """new"""
+    f.write("      - STATIC_IP=192.168.1.0" + "\n")
+    f.write("    cap_add:\n")
+    f.write("      - NET_ADMIN\n")
+
     f.write("    ports:\n")
     f.write("      - " + str(5679 + 0 - 1) + ":5678\n")
     f.write("    privileged: true\n")
@@ -46,7 +51,12 @@ def write_yaml(main_num):
     f.write("    image: two_miners_test:1.0 \n")
     f.write("    container_name: peerhandler\n")
     f.write("    environment:\n")
-    f.write("      - LOCAL_IP=192.168.1." + str(1) + "\n")
+
+    """new"""
+    f.write("      - STATIC_IP=192.168.1.1" + "\n")
+    f.write("    cap_add:\n")
+    f.write("      - NET_ADMIN\n")
+
     f.write("    ports:\n")
     f.write("      - " + str(5679 + 1 - 1) + ":5678\n")
     f.write("    privileged: true\n")
@@ -72,15 +82,15 @@ def write_yaml(main_num):
     f.write("\n")
 
     """new"""
-    f.write("\n")
-    f.write("networks: \n")
-    f.write("  backend:\n")
-    f.write("    driver: overlay\n")
-    f.write("    ipam:\n")
-    f.write("      config:\n")
-    f.write("        - subnet: 192.168.0.0/16\n")
-
-    f.write("\n # docker-compose -f emm.yaml up -d\n")
+    # f.write("\n")
+    # f.write("networks: \n")
+    # f.write("  backend:\n")
+    # f.write("    driver: overlay\n")
+    # f.write("    ipam:\n")
+    # f.write("      config:\n")
+    # f.write("        - subnet: 192.168.0.0/16\n")
+    #
+    # f.write("\n # docker-compose -f emm.yaml up -d\n")
 
     f.close()
 
