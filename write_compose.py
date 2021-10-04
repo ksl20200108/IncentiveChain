@@ -13,12 +13,18 @@ def write_yaml(main_num):
 
     f.write("  experimenter" + ":\n")
     f.write("    image: two_miners_test:1.0 \n")
-    f.write("    container_name: experimenter\n")
+
+    """old"""
+    # f.write("    container_name: experimenter\n")
+
     f.write("    environment:\n")
-    f.write("      - LOCAL_IP=192.168.1." + str(0) + "\n")
+    f.write("      - STATIC_IP=192.168.1." + str(0) + "\n")
     f.write("    ports:\n")
     f.write("      - " + str(5679 + 0 - 1) + ":5678\n")
-    f.write("    privileged: true\n")
+
+    """old"""
+    # f.write("    privileged: true\n")
+
     f.write("    volumes:\n")
     f.write("      - ./main" + str(main_num)  + ".py:/run/main.py\n")
     f.write("      - ./network.py:/run/network.py\n")
@@ -33,9 +39,18 @@ def write_yaml(main_num):
     f.write("      - ./experimenter.py:/run/experimenter.py\n")
     f.write("    command: >\n")
     f.write('        bash -c "python3 experimenter.py"\n')
+
+    """old"""
+    # f.write("    networks:\n")
+    # f.write("      static-network:\n")
+    # f.write("        ipv4_address: 192.168.1." + str(0) + "\n")
+
+    """new"""
     f.write("    networks:\n")
-    f.write("      static-network:\n")
-    f.write("        ipv4_address: 192.168.1." + str(0) + "\n")
+    f.write("      - test\n")
+    f.write("    cap_add::\n")
+    f.write("      - NET_ADMIN\n")
+
     f.write("\n")
     f.write("\n")
 
@@ -44,12 +59,18 @@ def write_yaml(main_num):
         f.write("    image: two_miners_test:1.0 \n")
         f.write("    depends_on:\n")
         f.write("      - experimenter\n")
-        f.write("    container_name: node" + str(i) + "\n")
+
+        """old"""
+        # f.write("    container_name: node" + str(i) + "\n")
+
         f.write("    environment:\n")
-        f.write("      - LOCAL_IP=192.168.1." + str(i) + "\n")
+        f.write("      - STATIC_IP=192.168.1." + str(i) + "\n")
         f.write("    ports:\n")
         f.write("      - " + str(5679 + i - 1) + ":5678\n")
-        f.write("    privileged: true\n")
+
+        """old"""
+        # f.write("    privileged: true\n")
+
         f.write("    volumes:\n")
         f.write("      - ./main" + str(main_num)  + ".py:/run/main.py\n")
         f.write("      - ./network.py:/run/network.py\n")
@@ -63,21 +84,29 @@ def write_yaml(main_num):
         f.write("      - ./peers:/run/peers\n")
         f.write("    command: >\n")
         f.write('        bash -c "python3 main.py"\n')
+
+        """old"""
+        # f.write("    networks:\n")
+        # f.write("      static-network:\n")
+        # f.write("        ipv4_address: 192.168.1." + str(i) + "\n")
+
+        """new"""
         f.write("    networks:\n")
-        f.write("      static-network:\n")
-        f.write("        ipv4_address: 192.168.1." + str(i) + "\n")
+        f.write("      - test\n")
+        f.write("    cap_add::\n")
+        f.write("      - NET_ADMIN\n")
+
         f.write("\n")
         f.write("\n")
 
+    """new"""
     f.write("\n")
     f.write("networks: \n")
-    f.write("  static-network:\n")
-    f.write("    ipam:\n")
-    f.write("      config:\n")
-    f.write("        - subnet: 192.168.0.0/16\n")
-    f.write("          gateway: 192.168.0.1\n")
+    f.write("  test:\n")
+    f.write("    external: true\n")
+    f.write("    name: test")
 
-    f.write("\n # docker-compose -f emm.yaml up -d\n")
+    f.write("# docker network create --driver overlay --subnet 192.168.0.0/16 --gateway 192.168.0.1 --attachable test")
 
     f.close()
 
