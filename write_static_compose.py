@@ -75,7 +75,7 @@ def write_yaml(main_num):
     f.write("\n")
     f.write("networks: \n")
     f.write("  backend:\n")
-    f.write("    driver: overlay")
+    f.write("    driver: overlay\n")
     f.write("    ipam:\n")
     f.write("      config:\n")
     f.write("        - subnet: 192.168.0.0/16\n")
