@@ -48,7 +48,7 @@ docker swarm init
 
 docker network create --driver overlay --subnet 192.168.0.0/16 --gateway 192.168.0.1 --attachable test
 
-docker stack deploy -c 11.yaml test
+docker stack deploy -c 11static.yaml test
 
 # Check the result
 
