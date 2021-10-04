@@ -52,7 +52,7 @@ docker stack deploy -c 11dynamic.yaml experiment
 
 # Stop Test
 
-docker service rm experiment
+docker stack rm experiment
 
 # Check the result
 
