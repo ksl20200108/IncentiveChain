@@ -15,7 +15,7 @@ def write_yaml(main_num):
 
     for i in range(2, 51):    # 50 users
         f.write("  node" + str(i) + ":\n")
-        f.write("    image: two_miners_test:1.0 \n")
+        f.write("    image: test \n")
 
         """old"""
         # f.write("    depends_on:\n")
@@ -49,11 +49,10 @@ def write_yaml(main_num):
         f.write("\n")
 
     """new"""
-    f.write("\n")
     f.write("networks: \n")
-    f.write("  default:\n")
-    f.write("    external: true\n")
-    f.write("    name: backend\n")
+    f.write("  test:\n")
+    f.write("  external: true\n")
+    f.write("  name: test\n")
 
     f.write("\n # docker-compose -f emm.yaml up -d\n")
 

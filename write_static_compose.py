@@ -14,8 +14,7 @@ def write_yaml(main_num):
     f.write("\n")
 
     f.write("  experimenter" + ":\n")
-    f.write("    image: two_miners_test:1.0 \n")
-    f.write("    container_name: experimenter\n")
+    f.write("    image: test \n")
     f.write("    environment:\n")
 
     """new"""
@@ -48,8 +47,7 @@ def write_yaml(main_num):
 
     """new"""
     f.write("  peerhandler" + ":\n")
-    f.write("    image: two_miners_test:1.0 \n")
-    f.write("    container_name: peerhandler\n")
+    f.write("    image: test \n")
     f.write("    environment:\n")
 
     """new"""
@@ -82,15 +80,10 @@ def write_yaml(main_num):
     f.write("\n")
 
     """new"""
-    # f.write("\n")
-    # f.write("networks: \n")
-    # f.write("  backend:\n")
-    # f.write("    driver: overlay\n")
-    # f.write("    ipam:\n")
-    # f.write("      config:\n")
-    # f.write("        - subnet: 192.168.0.0/16\n")
-    #
-    # f.write("\n # docker-compose -f emm.yaml up -d\n")
+    f.write("networks: \n")
+    f.write("  test:\n")
+    f.write("  external: true\n")
+    f.write("  name: test\n")
 
     f.close()
 

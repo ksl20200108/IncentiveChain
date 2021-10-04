@@ -18,15 +18,26 @@ def write_py(main_num):
     f.write("    fee1 = fee1.tolist()\n")
     f.write("    fee2 = fee2.tolist()\n")
     f.write("\n")
-    f.write("    path = './peers'\n")
-    f.write('    fp = open(os.path.join(path, "peers.txt"), "rb")\n')
-    f.write("    peers = pickle.load(fp)\n")
-    f.write("\n")
+
+    """old"""
+    # f.write("    path = './peers'\n")
+    # f.write('    fp = open(os.path.join(path, "peers.txt"), "rb")\n')
+    # f.write("    peers = pickle.load(fp)\n")
+
     f.write("    net = Network(fee1, fee2, mode, propose, user_num)\n")
+
+    """new"""
+    f.write("\n")
+    f.write("    net.get_ip_and_peers()")
+    f.write("\n")
+
     f.write('    log.info("main function start server")\n')
     f.write('    t1 = threading.Thread(target=net.start_server_loop, args=(10,))  # only one argument -> not iterable -> add ","\n')
     f.write('    log.info("main function start client")\n')
-    f.write("    t2 = threading.Thread(target=net.start_client_loop, args=(peers,))\n")
+
+    """new"""
+    f.write("    t2 = threading.Thread(target=net.start_client_loop, args=())\n")
+
     f.write("    t1.start()\n")
     f.write("    t2.start()\n")
     f.write("    t1.join()\n")
