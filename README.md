@@ -46,7 +46,7 @@ nohup ./start_experiment.sh &
 
 docker swarm init
 
-docker-compose -f 11static.yaml up -d
+docker stack deploy -c 11static.yml static-ip
 
 docker stack deploy -c 11dynamic.yaml experiment
 
