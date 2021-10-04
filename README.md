@@ -50,6 +50,10 @@ docker-compose -f 11static.yaml up -d
 
 docker stack deploy -c 11dynamic.yaml experiment
 
+# Stop Test
+
+docker service rm experiment
+
 # Check the result
 
 vim $i.txt, i\in [1, 8]
