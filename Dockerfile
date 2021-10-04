@@ -6,11 +6,13 @@ WORKDIR /run
 
 # RUN pip3 install numpy
 
+ COPY /start.sh /run/
  RUN apt-get update \
      && apt-get install -y net-tools iputils-ping \
      && pip3 install  --upgrade pip \
-     && pip3 install numpy
- COPY /start.sh /
+     && pip3 install numpy \
+     && chmod +x /run/start.sh
+
  ENTRYPOINT /start.sh
 
 # CMD ["python3", "docker_server.py"]
