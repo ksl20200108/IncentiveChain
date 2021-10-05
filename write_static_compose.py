@@ -14,7 +14,7 @@ def write_yaml(main_num):
     f.write("\n")
 
     f.write("  experimenter" + ":\n")
-    f.write("    image: test \n")
+    f.write("    image: test1 \n")
     f.write("    environment:\n")
 
     """new"""
@@ -26,7 +26,7 @@ def write_yaml(main_num):
     f.write("      - " + str(5679 + 0 - 1) + ":5678\n")
 
     """old"""
-    f.write("    privileged: true\n")
+    # f.write("    privileged: true\n")
 
     f.write("    volumes:\n")
     f.write("      - ./main" + str(main_num)  + ".py:/run/main.py\n")
@@ -54,7 +54,7 @@ def write_yaml(main_num):
 
     """new"""
     f.write("  peerhandler" + ":\n")
-    f.write("    image: test \n")
+    f.write("    image: test2 \n")
     f.write("    environment:\n")
 
     """new"""

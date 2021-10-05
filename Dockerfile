@@ -19,6 +19,8 @@ WORKDIR /run
 # CMD ["python3", "docker_client.py"]
 
 # how to use it?
+# docker build -t test1 .
+# docker build -t test2 .
 # docker build -t test .
 # -t means the name of the image and its tag
 # " ." at the end means create from a Dockerfile which lies in the current directory

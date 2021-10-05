@@ -6,3 +6,6 @@ else
         ifconfig eth0 ${STATIC_IP} netmask 255.255.255.0 up
 fi
 # sleep infinity
+# python3 experimenter.py
+# python3 peer_handler.py
+# python3 main.py
