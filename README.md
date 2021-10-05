@@ -108,3 +108,8 @@ docker push <hub-user>/<repo-name>:<tag>
 ### Further Info
 
 > *Should you have any question, please contact Shulin Ke at <shulinke@link.cuhk.edu.cn>.*
+
+### About the Author
+
+> *My name is Shulin Ke, a student from The Chinese University of Hong Kong, Shenzhen (CUHKSZ) major in Data Science and Big Data Technology.*
+
