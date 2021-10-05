@@ -83,6 +83,10 @@ vim $i.txt, i\in [1, 8]
 
 > *This is only for the author's reference*
 
+```
+
 docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]
 
 docker push <hub-user>/<repo-name>:<tag>
+
+```
