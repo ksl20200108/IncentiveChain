@@ -1,7 +1,7 @@
 ### IncentiveChain
 A demo for
 
-### Experiment preparation
+### Environment Setup
 sudo apt-get update
 
 sudo apt-get install git-all
@@ -17,6 +17,8 @@ sudo apt install python3.8
 sudo apt install python3-numpy
 
 pip3 install --upgrade numpy
+
+### Download the Source
 
 sudo -i
 
