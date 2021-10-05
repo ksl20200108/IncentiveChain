@@ -40,7 +40,7 @@ docker build -t test .
 
 ### Pull Docker Images
 
-*Instead of building docker images locally, you can also pull from docker hub*
+> *Instead of building docker images locally, you can also pull from docker hub.*
 
 docker pull shulinke/static_swarm1
 
