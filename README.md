@@ -104,3 +104,7 @@ docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]
 docker push <hub-user>/<repo-name>:<tag>
 
 ```
+
+### Further Info
+
+> *Should you have any question, please contact Shulin Ke at <shulinke@link.cuhk.edu.cn>.*
