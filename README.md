@@ -78,3 +78,11 @@ docker stack deploy -c 11dynamic.yaml test
 ### Check the result
 
 vim $i.txt, i\in [1, 8]
+
+### Push Images
+
+> *This is only for the author's reference*
+
+docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]
+
+docker push <hub-user>/<repo-name>:<tag>
