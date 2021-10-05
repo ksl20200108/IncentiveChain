@@ -62,6 +62,8 @@ docker network create --driver overlay --subnet 192.168.0.0/16 --gateway 192.168
 
 docker stack deploy -c 11static.yaml test
 
+docker stack deploy -c 11dynamic.yaml test
+
 ### Check the result
 
 vim $i.txt, i\in [1, 8]
