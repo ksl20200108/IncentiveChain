@@ -94,6 +94,14 @@ docker stack deploy -c 11dynamic.yaml test
 
 ```
 
+or
+
+```
+chmod +x test_experiment.sh
+nohup ./test_experiment.sh &
+
+```
+
 ### Check the result
 
 > *When debugging, use this command to check the result.*
