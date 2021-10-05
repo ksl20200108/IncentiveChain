@@ -64,6 +64,15 @@ python3 write_main.py
 
 ```
 
+### Initializing Docker Swarm
+
+> *Initializing the docker swarm before both automatical and testing experiment. After using docker swarm init, let other cloud instances join the swarm cluster. Should you have any question, please refer to docker swarm document.*
+
+```
+docker swarm init
+
+```
+
 ### Automatic Experiment
 
 > *The experiment could be tedious. Here is the automatical experiment implementing with bash scripts. Note that the sleeping time in bash script should be modified with respect to the number of containers.*
