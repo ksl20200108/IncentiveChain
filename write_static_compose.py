@@ -19,7 +19,7 @@ def write_yaml(main_num):
     """new"""
     f.write("    deploy: \n")
     f.write("      restart_policy: \n")
-    f.write('        condition: "no" \n')
+    f.write('        condition: none \n')
 
 
     f.write("    environment:\n")
@@ -66,7 +66,7 @@ def write_yaml(main_num):
     """new"""
     f.write("    deploy: \n")
     f.write("      restart_policy: \n")
-    f.write('        condition: "no" \n')
+    f.write('        condition: none \n')
 
     f.write("    environment:\n")
 
