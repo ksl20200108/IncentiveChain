@@ -127,5 +127,5 @@ docker push <hub-user>/<repo-name>:<tag>
 
 ### About the Author
 
-> *My name is Shulin Ke, a student from The Chinese University of Hong Kong, Shenzhen (CUHKSZ) major in Data Science and Big Data Technology.*
+> *My name is Shulin Ke, an undergraduate from The Chinese University of Hong Kong, Shenzhen (CUHKSZ) major in Data Science and Big Data Technology.*
 
