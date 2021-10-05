@@ -15,6 +15,13 @@ def write_yaml(main_num):
 
     f.write("  experimenter" + ":\n")
     f.write("    image: test1 \n")
+
+    """new"""
+    f.write("    deploy: \n")
+    f.write("      restart_policy: \n")
+    f.write('        condition: "no" \n')
+
+
     f.write("    environment:\n")
 
     """new"""
@@ -55,6 +62,12 @@ def write_yaml(main_num):
     """new"""
     f.write("  peerhandler" + ":\n")
     f.write("    image: test2 \n")
+
+    """new"""
+    f.write("    deploy: \n")
+    f.write("      restart_policy: \n")
+    f.write('        condition: "no" \n')
+
     f.write("    environment:\n")
 
     """new"""

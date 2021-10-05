@@ -17,6 +17,11 @@ def write_yaml(main_num):
         f.write("  node" + str(i) + ":\n")
         f.write("    image: test \n")
 
+        """new"""
+        f.write("    deploy: \n")
+        f.write("      restart_policy: \n")
+        f.write('        condition: "no" \n')
+
         """old"""
         # f.write("    depends_on:\n")
         # f.write("      - experimenter\n")
