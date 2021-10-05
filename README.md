@@ -1,6 +1,6 @@
 ### IncentiveChain
 
-> A demo for testing a new bitcoin mechanism using docker swarm with clustered cloud instances.
+> *A demo for testing a new bitcoin mechanism using docker swarm with clustered cloud instances.*
 
 ### Environment Setup
 sudo apt-get update
@@ -31,7 +31,7 @@ git checkout dynamic_50
 
 ### Build Docker Images
 
-> Please change the start.sh file before building each image
+> *Please change the start.sh file before building each image.*
 
 docker build -t test1 .
 
