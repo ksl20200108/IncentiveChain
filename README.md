@@ -4,6 +4,8 @@
 
 ### Environment Setup
 
+> For new cloud instances with Ubuntu system, you need to install some pre-requisite packages.
+
 ```
 sudo apt-get update
 sudo apt-get install git-all
@@ -16,6 +18,8 @@ pip3 install --upgrade numpy
 ```
 
 ### Download the Source
+
+> Download the source code from GitHub for further manipulation.
 
 ```
 sudo -i
@@ -46,6 +50,8 @@ docker pull shulinke/static_swarm
 
 ### Data Preparation
 
+> The data is generated from random processes, which means the data is unique for each experiment.
+
 ```
 python3 data.py
 python3 write_static_compose.py
@@ -55,12 +61,16 @@ python3 write_main.py
 
 ### Automatic Experiment
 
+> The experiment could be tedious. Here is the automatical experiment implementing with bash scripts.
+
 ```
 chmod +x start_experiment.sh
 nohup ./start_experiment.sh &
 ```
 
 ### Test Experiment
+
+> This is for author's debugging when developing the system.
 
 ```
 docker swarm init
@@ -70,6 +80,8 @@ docker stack deploy -c 11dynamic.yaml test
 ```
 
 ### Check the result
+
+> When debugging, use this command to check the result.
 
 ```
 vim $i.txt, i\in [1, 8]
