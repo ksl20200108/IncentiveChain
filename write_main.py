@@ -32,7 +32,7 @@ def write_py(main_num):
     f.write("\n")
 
     f.write('    log.info("main function start server")\n')
-    f.write('    t1 = threading.Thread(target=net.start_server_loop, args=(10,))  # only one argument -> not iterable -> add ","\n')
+    f.write('    t1 = threading.Thread(target=net.start_server_loop, args=(10000,))  # only one argument -> not iterable -> add ","\n')
     f.write('    log.info("main function start client")\n')
 
     """new"""

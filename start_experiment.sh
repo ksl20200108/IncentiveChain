@@ -14,7 +14,5 @@ do
     docker stack rm test
     docker kill $(docker ps -q)
     sleep 40
-    docker rm $(docker ps -a -q)
-    sleep 40
   done
 done

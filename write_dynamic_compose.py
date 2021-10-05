@@ -13,7 +13,7 @@ def write_yaml(main_num):
     f.write('services:\n')
     f.write("\n")
 
-    for i in range(2, 51):    # 50 users
+    for i in range(2, 10001):    # 10000 users
         f.write("  node" + str(i) + ":\n")
         f.write("    image: test \n")
 
