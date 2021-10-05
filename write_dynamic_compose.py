@@ -22,7 +22,7 @@ def write_yaml(main_num):
         # f.write("      - experimenter\n")
         # f.write("      - peerhandler\n")
 
-        f.write("    container_name: node" + str(i) + "\n")
+        # f.write("    container_name: node" + str(i) + "\n")
         f.write("    ports:\n")
         f.write("      - " + str(5679 + i - 1) + ":5678\n")
 
@@ -43,15 +43,15 @@ def write_yaml(main_num):
         f.write("    command: >\n")
         f.write('        bash -c "python3 main.py"\n')
         f.write("    networks:\n")
-        f.write("      static-network:\n")
-        f.write("        ipv4_address: 192.168.1." + str(i) + "\n")
+        f.write("      - test\n")
+        # f.write("        ipv4_address: 192.168.1." + str(i) + "\n")
         f.write("\n")
         f.write("\n")
 
     """new"""
     f.write("networks: \n")
     f.write("  test:\n")
-    f.write("  external: true\n")
+    f.write("    external: true\n")
     # f.write("  name: test\n")
 
     f.write("\n # docker-compose -f emm.yaml up -d\n")
