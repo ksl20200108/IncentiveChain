@@ -36,6 +36,8 @@ docker build -t test2 .
 
 docker build -t test .
 
+### Data Preparation
+
 python3 data.py
 
 python3 write_static_compose.py
