@@ -360,7 +360,7 @@ class Experimenter:
 
     def start_service(self):
         env_dist = os.environ
-        host = env_dist.get('LOCAL_IP')  # get the environment variable: LOCAL_IP
+        host = '192.168.1.0'  # get the environment variable: LOCAL_IP
         port = 5678
         self.server_sock.bind((host, port))
         self.server_sock.listen(1024)
