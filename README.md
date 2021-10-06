@@ -105,7 +105,7 @@ docker stack deploy -c 11dynamic.yaml test
 
 ```
 
-or
+> *Or you can leave the plodder's work to bash script:*
 
 ```
 chmod +x test_experiment.sh
@@ -116,7 +116,7 @@ nohup ./test_experiment.sh &
 
 ```
 
-> *You can check the number of services available using:*
+> *Since running 10^4 containers would take some time, during the whole process, you can check the number of services available using:*
 
 ```
 docker service ls | wc -l
