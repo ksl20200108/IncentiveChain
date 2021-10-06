@@ -79,6 +79,9 @@ docker swarm init
 
 ```
 chmod +x start_experiment.sh
+
+```
+```
 nohup ./start_experiment.sh &
 
 ```
@@ -98,6 +101,9 @@ or
 
 ```
 chmod +x test_experiment.sh
+
+```
+```
 nohup ./test_experiment.sh &
 
 ```
