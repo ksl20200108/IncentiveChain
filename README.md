@@ -116,6 +116,13 @@ nohup ./test_experiment.sh &
 
 ```
 
+> *You can check the number of services available using:*
+
+```
+docker service ls | wc -l
+
+```
+
 ### Check the result
 
 > *When debugging, use this command to check the result.*
