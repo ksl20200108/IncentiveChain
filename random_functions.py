@@ -6,11 +6,15 @@ Experiment on users of number 1600 and 4800
 import numpy as np
 
 
-def FTET_Sim(num_of_users):
+def FTET_Sim(num_of_users, given_seed=0):
     # FTET mechanism and simultaneous proposing
     """
     :return: Blockchain.transaction_pool1
     """
+
+    """new"""
+    np.random.seed(given_seed)
+
     if num_of_users == 1600:
         return np.random.uniform(low=50, high=106 + 1, size=(num_of_users,))
     elif num_of_users == 2400:
@@ -27,11 +31,15 @@ def FTET_Sim(num_of_users):
         return np.random.uniform(low=50, high=114.80 + 1, size=(np.count_nonzero(distribution <= 0.338),))
 
 
-def FTET_Nonsim(num_of_users):
+def FTET_Nonsim(num_of_users, given_seed=0):
     # FTET mechanism and non-simultaneous proposing
     """
     :return: Blockchain.transaction_pool1, Blockchain.transaction_pool2
     """
+
+    """new"""
+    np.random.seed(given_seed)
+
     if num_of_users == 1600:
         return \
             np.random.uniform(low=50, high=74, size=(int(num_of_users / 2),)), \
@@ -57,11 +65,15 @@ def FTET_Nonsim(num_of_users):
                 -1 * np.random.uniform(low=50, high=115.01, size=(np.count_nonzero(distribution <= 0.673),))
 
 
-def Current_Sim(num_of_users):
+def Current_Sim(num_of_users, given_seed=0):
     # Current blockchain mechanism and simultaneous proposing
     """
     :return: Blockchain.transaction_pool1
     """
+
+    """new"""
+    np.random.seed(given_seed)
+
     if num_of_users == 1600:
         return np.random.uniform(low=1, high=55, size=(num_of_users,))
     elif num_of_users == 2400:
@@ -76,11 +88,15 @@ def Current_Sim(num_of_users):
             return np.random.uniform(low=1, high=111.93, size=(np.count_nonzero(distribution <= 0.604),))
 
 
-def Current_Nonsim(num_of_users):
+def Current_Nonsim(num_of_users, given_seed=0):
     # Current blockchain mechanism and non-simultaneous proposing
     """
     :return: Blockchain.transaction_pool1, Blockchain.transaction_pool2
     """
+
+    """new"""
+    np.random.seed(given_seed)
+
     if num_of_users == 1600:
         return \
             np.random.uniform(low=1, high=23, size=(int(num_of_users / 2),)), \
@@ -103,3 +119,5 @@ def Current_Nonsim(num_of_users):
             return \
                 np.random.uniform(low=1, high=175.80, size=(np.count_nonzero(distribution <= 0.424),)), \
                 -1 * np.random.uniform(low=1, high=87, size=(int(num_of_users / 2),))
+
+# array([0.5488135 , 0.71518937, 0.60276338, 0.54488318])
