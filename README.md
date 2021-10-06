@@ -55,7 +55,7 @@ docker pull shulinke/static_swarm
 ### Data Preparation
 
 > *The data is generated from random processes, which means the data is unique for each experiment.*
-> *<span style="color:red">The random seed should be generated each time before doing the experiment by the user.</span>* 
+<span style="color:red">The random seed should be generated each time before doing the experiment by the user.</span>
 > *The random seed is 32 bit unsigned integers ([0 to 4294967295]).*
 > *Before running commands below, modify line 29 in data.py: change the 0 with your generated random seed.*
 
