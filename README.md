@@ -51,6 +51,9 @@ docker build -t test .
 docker pull shulinke/static_swarm1
 docker pull shulinke/static_swarm2
 docker pull shulinke/static_swarm
+docker tag shulinke/static_swarm1 test1
+docker tag shulinke/static_swarm2 test2
+docker tag shulinke/static_swarm test
 
 ```
 
