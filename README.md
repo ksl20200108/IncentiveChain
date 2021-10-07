@@ -149,7 +149,7 @@ docker push <hub-user>/<repo-name>:<tag>
 
 ### Further Info
 
-> *Should you have any question, please contact Shulin Ke at <shulinke@link.cuhk.edu.cn>.*
+> *Conducting the experiment could be complicated. Some details may not be included in this page. Should you have any question, please contact Shulin Ke at <shulinke@link.cuhk.edu.cn>.*
 
 ### About the Author
 
