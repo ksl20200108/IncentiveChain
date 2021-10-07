@@ -34,7 +34,7 @@ git checkout dynamic_10000
 
 ### Build Docker Images
 
-> *Please change the start.sh file before building each image.*
+> *This part is only for the author's reference. Users can ignore it.*
 
 ```
 docker build -t test1 .
@@ -45,7 +45,7 @@ docker build -t test .
 
 ### Pull Docker Images
 
-> *Instead of building docker images locally, you can also pull from docker hub.*
+> *Instead of building docker images locally, users are expected to pull them from docker hub.*
 
 ```
 docker pull shulinke/static_swarm1
